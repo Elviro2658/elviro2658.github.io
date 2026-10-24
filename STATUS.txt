@@ -1,0 +1,31 @@
+run: 2026-10-24T21:43:50Z
+bootstrap: downloading the original web files
+ok index.html
+ok styles.css
+ok main.js
+ok enhancements.js
+ok settings.js
+ok sw.js
+ok manifest.webmanifest
+ok favicon.svg
+ok og-image.svg
+ok robots.txt
+ok icons/service-negar-car.svg
+all originals match the expected checksums
+touch: cannot touch 'patches/applied.txt': No such file or directory
+grep: patches/applied.txt: No such file or directory
+files now present:
+README.md
+STATUS.txt
+enhancements.js
+favicon.svg
+icons
+index.html
+main.js
+manifest.webmanifest
+og-image.svg
+robots.txt
+settings.js
+styles.css
+sw.js
+tools

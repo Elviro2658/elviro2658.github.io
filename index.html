@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#102a30" />
+    <meta name="description" content="دفترچهٔ آفلاین ثبت سرویس، کیلومتر و هزینهٔ خودرو؛ اطلاعات روی همین دستگاه می‌ماند." />
+    <meta property="og:title" content="سرویس‌نگار" />
+    <meta property="og:description" content="سرویس‌ها و هزینه‌های خودرو را ساده و آفلاین ثبت کن." />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css?v=47" />
+    <title>سرویس‌نگار | دفترچهٔ خودرو</title>
+  </head>
+  <body>
+    <main id="home" class="app-shell">
+      <header class="topbar">
+        <a id="brand-home-link" class="brand" href="#home" aria-label="سرویس‌نگار، رفتن به نمای کلی">
+          <span class="brand-mark" aria-hidden="true">🚘</span>
+          <span><strong>سرویس‌نگار</strong><small>دفترچهٔ آفلاین خودرو</small></span>
+        </a>
+        <div class="top-actions">
+          <button class="icon-action theme-toggle" id="theme-toggle" type="button" aria-label="تغییر پوسته" aria-pressed="false" title="پوستهٔ تیره"><svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.2A8.6 8.6 0 0 1 8.8 3.6a8.8 8.8 0 1 0 11.6 11.6Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="m17.7 3 .5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg></button>
+          <button class="icon-action settings-toggle" id="settings-button" type="button" aria-label="تنظیمات" title="تنظیمات"><svg class="settings-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m19.4 13.4 1.1.9-1.6 2.8-1.4-.6a7.3 7.3 0 0 1-1.6.9l-.2 1.5h-3.4l-.3-1.5a7.3 7.3 0 0 1-1.6-.9l-1.4.6-1.6-2.8 1.1-.9a7.5 7.5 0 0 1 0-1.8l-1.1-.9L9 7.9l1.4.6a7.3 7.3 0 0 1 1.6-.9l.3-1.5h3.4l.2 1.5a7.3 7.3 0 0 1 1.6.9l1.4-.6 1.6 2.8-1.1.9a7.5 7.5 0 0 1 0 1.8Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m19.4 2.6.55 1.45 1.45.55-1.45.55-.55 1.45-.55-1.45L17.4 4.6l1.45-.55z" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linejoin="round"/></svg></button>
+          <button class="button button-primary" id="add-service-top" type="button" aria-label="ثبت سرویس"><svg class="top-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="top-action-label">ثبت سرویس</span></button>
+        </div>
+      </header>
+
+      <section class="vehicle-hero" aria-labelledby="vehicle-name">
+        <div class="vehicle-copy">
+          <span class="eyebrow"><i></i> دفترچهٔ خودروی من</span>
+          <h1 id="vehicle-name">خودروی من</h1>
+          <p id="vehicle-meta">مشخصات خودرو را وارد کنید تا دفترچه آماده شود.</p>
+          <button class="button button-glass" id="edit-vehicle-button" type="button">تنظیم مشخصات خودرو <span aria-hidden="true">←</span></button>
+        </div>
+        <div class="vehicle-art" aria-hidden="true"><img class="vehicle-hero-image" src="/icons/service-negar-car.svg" width="460" height="280" alt="" /></div>
+      </section>
+
+      <section class="stats-grid" aria-label="خلاصهٔ خودرو">
+        <article class="stat-card odometer-stat-card"><span class="stat-icon icon-km" aria-hidden="true"><svg class="stat-icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.1" fill="currentColor"/><path d="M12 9.9V3.2M10.2 13.1 5.1 17.3M13.8 13.1l5.1 4.2M4 9.8c2.2.1 4 .8 5.7 2M20 9.8c-2.2.1-4 .8-5.7 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="stat-label">آخرین کارکرد</span><button class="odometer-readout" id="edit-odometer-inline" type="button" aria-label="ثبت کارکرد جدید"><strong id="odometer-stat">۰</strong></button><small>برای ثبت کارکرد جدید لمس کنید</small></article>
+        <article class="stat-card" id="month-cost-card" hidden><span class="stat-icon icon-cost" aria-hidden="true"><svg class="stat-icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><text x="12" y="16.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="800" fill="currentColor">€</text></svg></span><span class="stat-label">هزینهٔ این ماه</span><strong id="month-cost-stat">۰</strong><small>تومان</small></article>
+        <article class="stat-card" id="due-count-card" role="button" tabindex="0" aria-label="رفتن به موعدها و پیگیری‌ها"><span class="stat-icon icon-due" aria-hidden="true"><svg class="stat-icon-svg" viewBox="0 0 24 24"><path d="m6.1 4.2-2-1.6M17.9 4.2l2-1.6M7 20.2l-1.2 1.5M17 20.2l1.2 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8.5V13l3.1 1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="stat-label">موعدها و پیگیری‌ها</span><strong id="due-count-stat">۰</strong><small>برای دیدن موارد نیازمند پیگیری لمس کنید</small></article>
+      </section>
+
+      <nav class="tabs" aria-label="بخش‌های دفترچه">
+        <button class="tab-button is-active" type="button" data-view="dashboard" aria-selected="true">نمای کلی</button>
+        <button class="tab-button" type="button" data-view="services" aria-selected="false">سرویس‌ها</button>
+        <button class="tab-button" type="button" data-view="insurance" aria-selected="false">بیمه‌ها</button>
+        <button class="tab-button" type="button" data-view="inspection" aria-selected="false">معاینهٔ فنی</button>
+        <button class="tab-button" type="button" data-view="expenses" aria-selected="false">هزینه‌ها</button>
+      </nav>
+
+      <section class="view-panel" id="dashboard-view" aria-labelledby="dashboard-view-title">
+        <h2 id="dashboard-view-title" class="visually-hidden">نمای کلی خودرو</h2>
+        <section id="dashboard-documents-section" class="record-section" hidden>
+          <div class="section-heading document-heading"><div><span class="section-kicker">آخرین سوابق ثبت‌شده</span><h2 id="dashboard-title">بیمه‌ها و معاینهٔ فنی</h2></div></div>
+          <div id="documents-list" class="documents-list" aria-live="polite"></div>
+        </section>
+        <section id="dashboard-due-section" class="record-section" hidden>
+          <div class="section-heading"><div><span class="section-kicker">سرویس‌های در انتظار</span><h2>موعدها و سرویس‌های سررسیدشده</h2></div><button class="text-link" type="button" data-open-view="services">سرویس‌ها <span aria-hidden="true">←</span></button></div>
+          <div id="dashboard-due-list" class="due-list" aria-live="polite"></div>
+        </section>
+        <section id="dashboard-periodic-preview" class="record-section" hidden>
+          <div class="section-heading history-heading"><div><span class="section-kicker">دارای موعد بعدی</span><h2>آخرین سرویس‌ها</h2></div><button class="text-link" type="button" data-open-view="services">همهٔ سرویس‌ها <span aria-hidden="true">←</span></button></div>
+          <div id="dashboard-periodic-list" class="service-list" aria-live="polite"></div>
+        </section>
+        <section id="dashboard-repair-preview" class="record-section" hidden>
+          <div class="section-heading history-heading"><div><span class="section-kicker">سه تعمیر آخر</span><h2>تعمیرات</h2></div><button class="text-link" type="button" data-open-view="services">همهٔ تعمیرات <span aria-hidden="true">←</span></button></div>
+          <div id="dashboard-repairs-list" class="service-list" aria-live="polite"></div>
+        </section>
+        
+      </section>
+
+      <section class="view-panel" id="services-view" aria-labelledby="services-title" hidden>
+        <div class="section-heading"><div><span class="section-kicker">سرویس‌های دوره‌ای و تعمیرات</span><h2 id="services-title">سرویس‌ها</h2></div><button class="button button-primary" id="add-service-history" type="button">＋ ثبت سرویس</button></div>
+        <section id="periodic-services-section" class="record-section" hidden><div class="section-heading"><div><span class="section-kicker">دارای موعد بعدی</span><h3>سرویس‌های دوره‌ای</h3></div></div><div id="periodic-services-list" class="service-list" aria-live="polite"></div></section>
+        <section id="repairs-section" class="record-section" hidden><div class="section-heading"><div><span class="section-kicker">بدون موعد بعدی</span><h3>تعمیرات</h3></div></div><div id="repairs-list" class="service-list" aria-live="polite"></div></section>
+      </section>
+
+      <section class="view-panel" id="insurance-view" aria-labelledby="insurance-title" hidden>
+        <div class="section-heading"><div><span class="section-kicker">مدارک ثبت‌شده</span><h2 id="insurance-title">بیمه‌ها</h2></div><button class="button button-primary" id="add-insurance-reminder" type="button">＋ ثبت بیمهٔ جدید</button></div>
+        <section id="insurance-active-section" class="record-section" hidden><div class="section-heading"><div><span class="section-kicker">دارای اعتبار</span><h3>بیمه‌های معتبر</h3></div></div><div id="insurance-current-list" class="documents-list" aria-live="polite"></div></section>
+        <section id="insurance-history-section" class="record-section" hidden><div class="section-heading"><div><span class="section-kicker">منقضی یا جایگزین‌شده</span><h3>سوابق بیمه‌ها</h3></div></div><div id="insurance-history-list" class="documents-list" aria-live="polite"></div></section>
+      </section>
+
+      <section class="view-panel" id="inspection-view" aria-labelledby="inspection-title" hidden>
+        <div class="section-heading"><div><span class="section-kicker">مدارک ثبت‌شده</span><h2 id="inspection-title">معاینهٔ فنی</h2></div><button class="button button-primary" id="add-inspection-reminder" type="button">＋ ثبت معاینهٔ فنی</button></div>
+        <section id="inspection-active-section" class="record-section" hidden><div class="section-heading"><div><span class="section-kicker">دارای اعتبار</span><h3>معاینهٔ معتبر</h3></div></div><div id="inspection-current-list" class="documents-list" aria-live="polite"></div></section>
+        <section id="inspection-history-section" class="record-section" hidden><div class="section-heading"><div><span class="section-kicker">منقضی یا جایگزین‌شده</span><h3>سوابق معاینهٔ فنی</h3></div></div><div id="inspection-history-list" class="documents-list" aria-live="polite"></div></section>
+      </section>
+
+      <section class="view-panel" id="expenses-view" aria-labelledby="expenses-title" hidden>
+        <div class="section-heading"><div><span class="section-kicker" id="expenses-total-label">جمع همهٔ هزینه‌ها</span><h2 id="expenses-title">هزینه‌های خودرو</h2></div><strong class="expense-total" id="all-cost-stat">۰ تومان</strong></div>
+        <div class="expense-filter-panel" aria-label="فیلتر تاریخ هزینه‌ها">
+          <div class="expense-filter-presets" role="group" aria-label="بازه‌های پیشنهادی"><button class="expense-filter-chip" type="button" data-expense-filter="week" aria-pressed="false">هزینه‌های این هفته</button><button class="expense-filter-chip" type="button" data-expense-filter="month" aria-pressed="false">هزینه‌های این ماه</button><button class="expense-filter-chip is-active" type="button" data-expense-filter="all" aria-pressed="true">همه</button></div>
+          <div class="expense-date-range"><label class="field"><span>از تاریخ</span><div class="date-input-row"><input id="expense-start-date" inputmode="numeric" placeholder="اختیاری" autocomplete="off" /><button class="date-picker-button" type="button" data-calendar="expense-start-date" aria-label="انتخاب تاریخ شروع فیلتر">▦</button></div></label><label class="field"><span>تا تاریخ</span><div class="date-input-row"><input id="expense-end-date" inputmode="numeric" placeholder="اختیاری" autocomplete="off" /><button class="date-picker-button" type="button" data-calendar="expense-end-date" aria-label="انتخاب تاریخ پایان فیلتر">▦</button></div></label><div class="expense-filter-actions"><button class="button button-primary" id="apply-expense-filter" type="button">اعمال فیلتر تاریخ</button><button class="button button-outline" id="clear-expense-filter" type="button">پاک‌کردن فیلتر</button></div><p id="expense-filter-error" class="form-error expense-filter-error" role="alert" aria-live="polite"></p></div>
+        </div>
+        <div id="expenses-list" class="expense-list" aria-live="polite"></div>
+      </section>
+
+      <footer class="page-footer"><span>سرویس‌نگار · نسخهٔ اولیه</span><span>آفلاین و بدون حساب کاربری</span></footer>
+    </main>
+
+    <dialog id="settings-dialog" class="app-dialog settings-dialog" aria-labelledby="settings-dialog-title">
+      <div class="dialog-head"><div><span class="section-kicker">سفارشی‌سازی برنامه</span><h2 id="settings-dialog-title">تنظیمات</h2></div><button class="close-button" id="close-settings-dialog" type="button" aria-label="بستن">×</button></div>
+      <div class="settings-body">
+        <section class="settings-section" aria-labelledby="settings-reminders-title"><h3 id="settings-reminders-title">یادآوری‌ها</h3><p class="settings-hint">هر نوع یادآوری را جداگانه روشن یا خاموش کن.</p>
+          <label class="settings-row"><span><strong>موعد سرویس بر اساس تاریخ</strong><small>یادآوری تاریخ سرویس‌های ثبت‌شده</small></span><input class="settings-switch" id="notify-service-date" type="checkbox" checked /></label>
+          <label class="settings-row"><span><strong>موعد سرویس بر اساس کیلومتر</strong><small>با به‌روزرسانی کارکرد خودرو بررسی می‌شود</small></span><input class="settings-switch" id="notify-service-km" type="checkbox" checked /></label>
+          <label class="settings-row"><span><strong>انقضای بیمه</strong><small>یادآوری زمان تمدید بیمه‌نامه</small></span><input class="settings-switch" id="notify-insurance" type="checkbox" checked /></label>
+          <label class="settings-row"><span><strong>موعد معاینهٔ فنی</strong><small>یادآوری انقضا و مراجعهٔ بعدی</small></span><input class="settings-switch" id="notify-inspection" type="checkbox" checked /></label>
+          <div class="settings-inline"><label for="notification-default-time">ساعت پیش‌فرض یادآوری</label><input id="notification-default-time" type="time" value="09:00" /></div>
+          <div class="settings-inline"><label for="notification-sound">صدای اعلان</label><div class="settings-sound-controls"><select id="notification-sound"><option value="default">صدای پیش‌فرض دستگاه</option></select><button class="button button-outline" id="test-notification-sound" type="button">آزمون صدا</button></div></div>
+          <p class="settings-hint settings-capability-note" id="notification-capability-note">اعلان زمان‌بندی‌شده و صداهای دستگاه در نسخهٔ اندرویدی فعال می‌شوند؛ نسخهٔ وب هنگام بسته‌بودن برنامه تضمین اعلان ندارد.</p>
+          <aside class="notification-control" aria-label="اعلان‌های این دستگاه"><div class="notification-copy"><strong>اجازهٔ اعلان</strong><span id="notification-status" aria-live="polite">در حال بررسی</span></div><button class="button button-outline" id="enable-notifications-button" type="button">فعال‌کردن اعلان‌ها</button></aside>
+        </section>
+        <section class="backup-panel settings-backup-panel" aria-label="نسخهٔ پشتیبان"><div class="backup-copy"><strong>پشتیبان‌گیری</strong><p id="auto-backup-status">نسخهٔ ماهانه خودکار در همین مرورگر ساخته می‌شود؛ پاک‌کردن داده‌های مرورگر، سوابق و پشتیبان را حذف می‌کند.</p></div><div class="backup-actions"><button class="button button-outline" id="backup-button" type="button">دانلود نسخهٔ پشتیبان</button><button class="button button-outline" id="restore-button" type="button">بارگذاری نسخهٔ پشتیبان</button><input id="restore-file" class="visually-hidden" type="file" accept="application/json,.json" /></div></section>
+      </div>
+    </dialog>
+
+    <dialog id="vehicle-dialog" class="app-dialog" aria-labelledby="vehicle-dialog-title">
+      <form id="vehicle-form" novalidate>
+        <div class="dialog-head"><div><span class="section-kicker">خودروی فعال</span><h2 id="vehicle-dialog-title">مشخصات خودرو</h2></div><button class="close-button" id="close-vehicle-dialog" type="button" aria-label="بستن">×</button></div>
+        <div class="form-grid">
+          <label class="field field-wide"><span>نام خودرو <b>*</b></span><input id="vehicle-label" maxlength="45" placeholder="مثلاً ماشین من" autocomplete="off" /></label>
+          <label class="field"><span>مدل یا سازنده</span><input id="vehicle-model" maxlength="60" placeholder="مثلاً پژو ۲۰۶" autocomplete="off" /></label>
+          <label class="field"><span>سال ساخت</span><input id="vehicle-year" type="text" inputmode="numeric" data-fa-digits maxlength="4" placeholder="مثلاً ۱۴۰۰" /></label>
+          <label class="field"><span>پلاک (اختیاری)</span><input id="vehicle-plate" maxlength="20" placeholder="اختیاری" autocomplete="off" /></label>
+          <label class="field"><span>آخرین کارکرد (کیلومتر)</span><div class="stepper-row odometer-form-stepper"><button class="money-step-button" type="button" data-step-target="vehicle-odometer" data-step="100" aria-label="صد کیلومتر بیشتر">＋۱۰۰</button><input id="vehicle-odometer" type="text" inputmode="numeric" data-fa-number placeholder="مثلاً ۸۵۰۰۰" /><button class="money-step-button" type="button" data-step-target="vehicle-odometer" data-step="-100" aria-label="صد کیلومتر کمتر">−۱۰۰</button></div></label>
+        </div>
+        <p id="vehicle-error" class="form-error" role="alert"></p>
+        <div class="dialog-actions"><button class="button button-outline" id="cancel-vehicle-dialog" type="button">انصراف</button><button class="button button-primary" type="submit">ذخیرهٔ خودرو</button></div>
+      </form>
+    </dialog>
+
+    <dialog id="odometer-dialog" class="app-dialog odometer-dialog" aria-labelledby="odometer-dialog-title">
+      <form id="odometer-form" novalidate>
+        <div class="dialog-head"><div><span class="section-kicker">به‌روزرسانی خودرو</span><h2 id="odometer-dialog-title">ثبت آخرین کارکرد</h2></div><button class="close-button" id="close-odometer-dialog" type="button" aria-label="بستن">×</button></div>
+        <label class="field field-wide"><span>کارکرد فعلی خودرو (کیلومتر)</span><div class="stepper-row odometer-entry-stepper"><button class="money-step-button" type="button" data-step-target="odometer-entry" data-step="100" aria-label="صد کیلومتر بیشتر">＋۱۰۰</button><input id="odometer-entry" type="text" inputmode="numeric" data-fa-number /><button class="money-step-button" type="button" data-step-target="odometer-entry" data-step="-100" aria-label="صد کیلومتر کمتر">−۱۰۰</button></div><small>برای تغییر سریع از دکمه‌ها استفاده کنید. سوابق سرویس قبلی تغییر نمی‌کنند.</small></label>
+        <p id="odometer-error" class="form-error" role="alert"></p>
+        <div class="dialog-actions"><button class="button button-outline" id="cancel-odometer-dialog" type="button">انصراف</button><button class="button button-primary" id="save-odometer-button" type="submit">ذخیرهٔ کارکرد</button></div>
+      </form>
+    </dialog>
+
+    <dialog id="odometer-confirm-dialog" class="app-dialog odometer-confirm-dialog" aria-labelledby="odometer-confirm-title" aria-describedby="odometer-confirm-message">
+      <div class="odometer-confirm-content">
+        <div class="dialog-head"><div><span class="section-kicker">تأیید ثبت جدید</span><h2 id="odometer-confirm-title">تغییر کیلومترشمار</h2></div></div>
+        <p id="odometer-confirm-message" class="odometer-confirm-message" role="status"></p>
+        <div class="dialog-actions odometer-confirm-actions"><button class="button button-outline" id="cancel-odometer-change" type="button">نه، فعلاً تغییر نده</button><button class="button button-primary" id="accept-odometer-change" type="button">بله، به‌روزرسانی شود</button><button class="button button-outline odometer-edit-source" id="edit-odometer-source" type="button">بازگشت به صفحهٔ همین ثبت و اصلاح</button></div>
+      </div>
+    </dialog>
+
+    <dialog id="service-dialog" class="app-dialog" aria-labelledby="service-dialog-title">
+      <form id="service-form" novalidate>
+        <div class="dialog-head"><div><span class="section-kicker">دفترچهٔ سرویس</span><h2 id="service-dialog-title">ثبت سرویس</h2></div><button class="close-button" id="close-service-dialog" type="button" aria-label="بستن">×</button></div>
+        <div class="form-grid">
+          <label class="field"><span>نوع سرویس <b>*</b></span><select id="service-type"></select></label>
+          <label class="field"><span>تاریخ انجام <b>*</b></span><div class="date-input-row"><input id="service-date" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۶" autocomplete="off" /><button class="date-picker-button" type="button" data-calendar="service-date" aria-label="انتخاب تاریخ از تقویم">▦</button></div><small>تاریخ شمسی را وارد کنید یا از تقویم بردارید.</small></label>
+          <label class="field"><span>قطعه یا بخش خودرو</span><input id="service-part" maxlength="80" placeholder="مثلاً روغن موتور 5W-30" autocomplete="off" /></label>
+          <label class="field"><span>برند قطعه یا تعمیرگاه</span><input id="service-brand" maxlength="60" placeholder="اختیاری" autocomplete="off" /></label>
+          <label class="field field-wide"><span>کیلومتر هنگام سرویس <b>*</b></span><div class="km-control"><div class="km-step-row"><button class="km-step-button" type="button" data-km-target="service-km" data-step-target="service-km" data-step="-100" data-km-step="-100" aria-label="صد کیلومتر کمتر">−۱۰۰</button><input id="service-km" type="text" inputmode="numeric" data-fa-number placeholder="آخرین کارکرد ثبت‌شده" /><button class="km-step-button" type="button" data-km-target="service-km" data-step-target="service-km" data-step="100" data-km-step="100" aria-label="صد کیلومتر بیشتر">＋۱۰۰</button></div><div class="km-quick-row"><button class="km-quick-button" type="button" data-km-latest="service-km">آخرین کیلومتر: <strong id="latest-km-label">۰</strong></button><button class="km-quick-button" type="button" data-km-target="service-km" data-km-from="latest" data-km-offset="5000">＋۵٬۰۰۰</button><button class="km-quick-button" type="button" data-km-target="service-km" data-km-from="latest" data-km-offset="10000">＋۱۰٬۰۰۰</button></div></div></label>
+          <div class="cost-fields-grid field-wide">
+            <label class="field cost-unit-field"><span>قیمت هر قطعه (تومان)</span><div class="stepper-row"><button class="money-step-button" type="button" data-step-target="parts-cost" data-step="100000" aria-label="صد هزار تومان بیشتر">＋۱۰۰٬۰۰۰</button><input id="parts-cost" type="text" inputmode="numeric" data-fa-number placeholder="مثلاً ۱۸۰۰۰۰۰" /><button class="money-step-button" type="button" data-step-target="parts-cost" data-step="-100000" aria-label="صد هزار تومان کمتر">−۱۰۰٬۰۰۰</button></div></label>
+            <label class="field parts-quantity-field"><span>تعداد قطعه</span><div class="number-stepper parts-quantity-stepper"><input id="parts-quantity" type="text" inputmode="numeric" data-fa-number value="1" /><span class="number-step-buttons"><button class="number-step-button" type="button" data-step-target="parts-quantity" data-step="1" aria-label="یک قطعه بیشتر">▲</button><button class="number-step-button" type="button" data-step-target="parts-quantity" data-step="-1" aria-label="یک قطعه کمتر">▼</button></span></div></label>
+            <label class="field labor-cost-field"><span>اجرت (تومان)</span><div class="stepper-row"><button class="money-step-button" type="button" data-step-target="labor-cost" data-step="100000" aria-label="صد هزار تومان بیشتر">＋۱۰۰٬۰۰۰</button><input id="labor-cost" type="text" inputmode="numeric" data-fa-number placeholder="مثلاً ۷۰۰۰۰۰" /><button class="money-step-button" type="button" data-step-target="labor-cost" data-step="-100000" aria-label="صد هزار تومان کمتر">−۱۰۰٬۰۰۰</button></div></label>
+          </div>
+          <div class="field total-cost-field"><span>جمع هزینه</span><output id="service-total-preview">۰ تومان</output></div>
+          <label class="field"><span>موعد بعدی بر اساس کیلومتر</span><div class="km-control"><div class="km-step-row"><button class="km-step-button" type="button" data-km-target="next-km" data-step-target="next-km" data-step="-100" data-km-step="-100" aria-label="صد کیلومتر کمتر">−۱۰۰</button><input id="next-km" type="text" inputmode="numeric" data-fa-number /><button class="km-step-button" type="button" data-km-target="next-km" data-step-target="next-km" data-step="100" data-km-step="100" aria-label="صد کیلومتر بیشتر">＋۱۰۰</button></div><div class="km-quick-row"><button class="km-quick-button" type="button" data-km-target="next-km" data-km-from="service-km" data-km-offset="5000">＋۵٬۰۰۰ از فعلی</button><button class="km-quick-button" type="button" data-km-target="next-km" data-km-from="service-km" data-km-offset="10000">＋۱۰٬۰۰۰ از فعلی</button></div></div></label>
+          <label class="field"><span>موعد بعدی بر اساس تاریخ</span><div class="date-input-row"><input id="next-date" inputmode="numeric" placeholder="اختیاری · ۱۴۰۵/۱۰/۱۶" autocomplete="off" /><button class="date-picker-button" type="button" data-calendar="next-date" aria-label="انتخاب موعد از تقویم">▦</button></div><small>اختیاری؛ تاریخ شمسی یا انتخاب از تقویم.</small></label>
+          <div class="reminder-settings field-wide"><label class="check-field"><input id="service-reminder-enabled" type="checkbox" checked /><span>یادآوری برای موعد بعدی فعال باشد</span></label><label class="field"><span>یادآوری پیش از موعد</span><div class="number-unit-row"><input id="service-reminder-value" type="text" inputmode="numeric" data-fa-number value="1" /><span>روز</span></div></label><label class="field"><span>ساعت یادآوری</span><input id="service-reminder-time" type="time" value="09:00" /></label></div>
+          <div id="service-km-reminder-panel" class="km-reminder-panel field-wide" hidden><label class="check-field field-wide"><input id="service-km-reminder-enabled" type="checkbox" checked /><span>یادآوری پیش از موعد کیلومتری فعال باشد</span></label><label class="field"><span>چند کیلومتر مانده به موعد یادآوری شود</span><div class="stepper-row km-reminder-stepper"><button class="money-step-button" type="button" data-step-target="service-reminder-km-lead" data-step="-100" aria-label="صد کیلومتر کمتر">−۱۰۰</button><input id="service-reminder-km-lead" type="text" inputmode="numeric" data-fa-number value="500" /><button class="money-step-button" type="button" data-step-target="service-reminder-km-lead" data-step="100" aria-label="صد کیلومتر بیشتر">＋۱۰۰</button></div></label></div>
+          <label class="field field-wide photo-field"><span>عکس فاکتور یا قطعه</span><input id="service-photo" type="file" accept="image/*" capture="environment" /><small>عکس فشرده و روی همین دستگاه ذخیره می‌شود؛ در پشتیبان هم قرار می‌گیرد.</small></label>
+          <div id="selected-photo-wrap" class="photo-preview-wrap" hidden><img id="selected-photo-preview" alt="پیش‌نمایش عکس انتخاب‌شده" /><span>عکس تازه انتخاب شده</span></div>
+          <div id="existing-photo-wrap" class="photo-preview-wrap" hidden><button id="view-existing-photo" class="photo-preview-button" type="button"><img id="existing-photo-preview" alt="پیش‌نمایش فاکتور ذخیره‌شده" /><span>مشاهدهٔ عکس ذخیره‌شده</span></button><button id="remove-existing-photo" class="small-action danger" type="button">برداشتن عکس</button></div>
+          <label class="field field-wide"><span>یادداشت</span><textarea id="service-note" rows="3" maxlength="240" placeholder="مثلاً روغن 5W-30 و فیلتر هوا"></textarea></label>
+        </div>
+        <p id="service-error" class="form-error" role="alert"></p>
+        <div class="dialog-actions"><button class="button button-outline" id="cancel-service-dialog" type="button">انصراف</button><button class="button button-primary" id="save-service-button" type="submit">ذخیرهٔ سرویس</button></div><button class="form-delete-action" id="delete-service-record" type="button" hidden>حذف همین سابقه</button>
+      </form>
+    </dialog>
+        <dialog id="document-dialog" class="app-dialog" aria-labelledby="document-dialog-title">
+      <form id="document-form" novalidate>
+        <div class="dialog-head"><div><span class="section-kicker">مدارک و سررسیدها</span><h2 id="document-dialog-title">ثبت مدرک</h2></div><button class="close-button" id="close-document-dialog" type="button" aria-label="بستن">×</button></div>
+        <label class="field field-wide"><span>نوع مدرک</span><select id="document-kind"><option value="insurance">بیمه</option><option value="inspection">معاینهٔ فنی</option></select></label>
+        <div id="insurance-fields" class="form-grid document-fields">
+          <label class="field"><span>نوع بیمه <b>*</b></span><select id="insurance-type"><option value="third_party">شخص ثالث</option><option value="body">بدنه</option><option value="theft">سرقت</option><option value="passenger_accidents">حوادث سرنشین</option><option value="other">سایر</option></select></label>
+          <label class="field field-wide" id="insurance-other-type-field" hidden><span>نام نوع بیمه</span><input id="insurance-type-other" maxlength="60" placeholder="نوع بیمهٔ دیگر را وارد کنید" autocomplete="off" /></label>
+          <label class="field field-wide"><span>شرکت بیمه</span><div class="insurance-company-autocomplete" id="insurance-company-autocomplete"><div class="insurance-company-input-row"><input id="insurance-company" maxlength="80" placeholder="نام شرکت بیمه" autocomplete="off" autocorrect="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="insurance-company-options" /><button id="insurance-company-toggle" type="button" aria-label="نمایش شرکت‌های بیمه" aria-expanded="false">▾</button></div><div id="insurance-company-options" class="insurance-company-options" role="listbox" hidden></div></div><small>اگر نام شرکت در فهرست نیست، نام دلخواه را تایپ کنید.</small></label>
+          <label class="field"><span>شمارهٔ بیمه‌نامه</span><input id="insurance-policy" maxlength="60" placeholder="اختیاری" /></label>
+          <label class="field"><span>تخفیف (%)</span><div class="number-stepper discount-stepper"><input id="insurance-discount" type="text" inputmode="numeric" data-fa-number placeholder="درصد تخفیف" /><span class="number-step-buttons"><button class="number-step-button" type="button" data-step-target="insurance-discount" data-step="1" aria-label="یک درصد بیشتر">▲</button><button class="number-step-button" type="button" data-step-target="insurance-discount" data-step="-1" aria-label="یک درصد کمتر">▼</button></span></div></label>
+          <label class="field"><span>مدت تخفیف (سال)</span><div class="number-stepper discount-stepper"><input id="insurance-discount-years" type="text" inputmode="numeric" data-fa-number placeholder="تعداد سال" /><span class="number-step-buttons"><button class="number-step-button" type="button" data-step-target="insurance-discount-years" data-step="1" aria-label="یک سال بیشتر">▲</button><button class="number-step-button" type="button" data-step-target="insurance-discount-years" data-step="-1" aria-label="یک سال کمتر">▼</button></span></div></label>
+          <label class="field"><span>تاریخ شروع <b>*</b></span><div class="date-input-row"><input id="insurance-start-date" inputmode="numeric" placeholder="۱۴۰۵/۰۱/۰۱" /><button class="date-picker-button" type="button" data-calendar="insurance-start-date" aria-label="انتخاب تاریخ از تقویم">▦</button></div></label>
+          <label class="field"><span>نام کارگزار</span><input id="insurance-agent" maxlength="80" placeholder="اختیاری" /></label>
+          <label class="field"><span>شماره تماس</span><input id="insurance-contact" type="tel" maxlength="45" placeholder="اختیاری" /></label>
+          <label class="field"><span>تاریخ انقضا <b>*</b></span><div class="date-input-row"><input id="insurance-expiry-date" inputmode="numeric" placeholder="۱۴۰۶/۰۱/۰۱" /><button class="date-picker-button" type="button" data-calendar="insurance-expiry-date" aria-label="انتخاب تاریخ از تقویم">▦</button></div></label>
+          <label class="field field-wide"><span>هزینهٔ بیمه (تومان)</span><div class="stepper-row insurance-cost-stepper"><button class="money-step-button" type="button" data-step-target="insurance-cost" data-step="100000" aria-label="صد هزار تومان بیشتر">＋۱۰۰٬۰۰۰</button><input id="insurance-cost" type="text" inputmode="numeric" data-fa-number placeholder="اختیاری" /><button class="money-step-button" type="button" data-step-target="insurance-cost" data-step="-100000" aria-label="صد هزار تومان کمتر">−۱۰۰٬۰۰۰</button></div></label>
+          <label class="field"><span>یادآوری پیش از انقضا</span><div class="number-unit-row"><input id="insurance-reminder-days" type="text" inputmode="numeric" data-fa-number value="30" /><span>روز</span></div></label>
+          <label class="field"><span>ساعت یادآوری</span><input id="insurance-reminder-time" type="time" value="09:00" /></label>
+          <label class="check-field field-wide"><input id="insurance-reminder-enabled" type="checkbox" checked /><span>یادآوری این بیمه فعال باشد</span></label>
+          <label class="field field-wide"><span>کیلومتر هنگام صدور بیمه</span><div class="km-step-row insurance-km-stepper"><button class="km-step-button" type="button" data-step-target="insurance-km" data-step="-100" aria-label="صد کیلومتر کمتر">−۱۰۰</button><input id="insurance-km" type="text" inputmode="numeric" data-fa-number placeholder="آخرین کارکرد" /><button class="km-step-button" type="button" data-step-target="insurance-km" data-step="100" aria-label="صد کیلومتر بیشتر">＋۱۰۰</button></div></label>
+          <label class="field"><span>تاریخ پرداخت</span><div class="date-input-row"><input id="insurance-payment-date" inputmode="numeric" placeholder="اختیاری" /><button class="date-picker-button" type="button" data-calendar="insurance-payment-date" aria-label="انتخاب تاریخ از تقویم">▦</button></div></label>
+          <label class="field field-wide"><span>توضیحات</span><textarea id="insurance-notes" rows="2" maxlength="240" placeholder="نکتهٔ مهم بیمه‌نامه"></textarea></label>
+        </div>
+        <div id="inspection-fields" class="form-grid document-fields" hidden>
+          <label class="field"><span>تاریخ انجام معاینه <b>*</b></span><div class="date-input-row"><input id="inspection-date" inputmode="numeric" placeholder="۱۴۰۵/۰۷/۱۶" /><button class="date-picker-button" type="button" data-calendar="inspection-date" aria-label="انتخاب تاریخ از تقویم">▦</button></div></label>
+          <label class="field"><span>تاریخ انقضا <b>*</b></span><div class="date-input-row"><input id="inspection-expiry-date" inputmode="numeric" placeholder="۱۴۰۶/۰۷/۱۶" /><button class="date-picker-button" type="button" data-calendar="inspection-expiry-date" aria-label="انتخاب تاریخ از تقویم">▦</button></div></label>
+          <label class="field"><span>مرکز معاینهٔ فنی</span><input id="inspection-center" maxlength="80" placeholder="نام مرکز" /></label>
+          <label class="field"><span>شمارهٔ گواهی</span><input id="inspection-certificate" maxlength="60" placeholder="اختیاری" /></label>
+          <label class="field"><span>پلاک خودرو</span><input id="inspection-plate" maxlength="20" placeholder="پلاک خودرو" /></label>
+          <label class="field"><span>کیلومتر هنگام مراجعه</span><div class="km-step-row"><button class="km-step-button" type="button" data-step-target="inspection-km" data-step="-100" aria-label="صد کیلومتر کمتر">−۱۰۰</button><input id="inspection-km" type="text" inputmode="numeric" data-fa-number placeholder="آخرین کارکرد ثبت‌شده" /><button class="km-step-button" type="button" data-step-target="inspection-km" data-step="100" aria-label="صد کیلومتر بیشتر">＋۱۰۰</button></div></label>
+          <label class="field"><span>نتیجه</span><select id="inspection-result"><option value="passed">قبول</option><option value="failed">مردود</option></select></label>
+          <label class="field"><span>تاریخ مراجعهٔ بعدی</span><div class="date-input-row"><input id="inspection-next-date" inputmode="numeric" placeholder="اختیاری" /><button class="date-picker-button" type="button" data-calendar="inspection-next-date" aria-label="انتخاب تاریخ از تقویم">▦</button></div></label>
+          <label class="field"><span>یادآوری پیش از انقضا</span><div class="number-unit-row"><input id="inspection-reminder-days" type="text" inputmode="numeric" data-fa-number value="30" /><span>روز</span></div></label>
+          <label class="field"><span>ساعت یادآوری</span><input id="inspection-reminder-time" type="time" value="09:00" /></label>
+          <label class="check-field field-wide"><input id="inspection-reminder-enabled" type="checkbox" checked /><span>یادآوری این معاینه فعال باشد</span></label>
+          <label class="field"><span>هزینه (تومان)</span><input id="inspection-cost" type="text" inputmode="numeric" data-fa-number placeholder="اختیاری" /></label>
+          <label class="field field-wide"><span>توضیحات</span><textarea id="inspection-notes" rows="2" maxlength="240" placeholder="نتیجهٔ بازدید یا نکتهٔ مهم"></textarea></label>
+        </div>
+        <label class="field field-wide document-photo-field"><span id="document-photo-label">عکس بیمه‌نامه</span><input id="document-photo" type="file" accept="image/*" capture="environment" /><small>عکس فشرده روی همین دستگاه می‌ماند و در نسخهٔ پشتیبان نیز قرار می‌گیرد.</small></label>
+        <div id="document-selected-photo-wrap" class="photo-preview-wrap" hidden><img id="document-selected-photo-preview" alt="پیش‌نمایش عکس مدرک تازه" /><span>عکس تازه انتخاب شده</span></div>
+        <div id="document-existing-photo-wrap" class="photo-preview-wrap" hidden><button id="view-existing-document-photo" class="photo-preview-button" type="button"><img id="document-existing-photo-preview" alt="پیش‌نمایش مدرک ذخیره‌شده" /><span>مشاهدهٔ عکس ذخیره‌شده</span></button><button id="remove-existing-document-photo" class="small-action danger" type="button">برداشتن عکس</button></div>
+        <p id="document-error" class="form-error" role="alert"></p>
+        <div class="dialog-actions"><button class="button button-outline" id="cancel-document-dialog" type="button">انصراف</button><button class="button button-primary" id="save-document-button" type="submit">ذخیرهٔ مدرک</button></div><button class="form-delete-action" id="delete-document-record" type="button" hidden>حذف این مدرک</button>
+      </form>
+    </dialog>
+    <dialog id="jalali-calendar-dialog" class="app-dialog calendar-dialog" aria-labelledby="jalali-calendar-title">
+      <div class="dialog-body calendar-content"><div class="dialog-head"><div><span class="section-kicker">انتخاب تاریخ شمسی</span><h2 id="jalali-calendar-title">تقویم</h2></div><button class="close-button" id="close-jalali-calendar" type="button" aria-label="بستن تقویم">×</button></div>
+        <div class="calendar-toolbar"><button class="calendar-nav-button" type="button" data-calendar-nav="-1" aria-label="ماه قبل">‹</button><strong id="jalali-calendar-month"></strong><button class="calendar-nav-button" type="button" data-calendar-nav="1" aria-label="ماه بعد">›</button></div>
+        <div class="jalali-weekdays" aria-hidden="true"><span>شنبه</span><span>یکشنبه</span><span>دوشنبه</span><span>سه‌شنبه</span><span>چهارشنبه</span><span>پنجشنبه</span><span>جمعه</span></div>
+        <div id="jalali-calendar-days" class="jalali-calendar-days" role="grid"></div>
+        <div class="dialog-actions"><button class="button button-outline" id="jalali-calendar-today" type="button">امروز</button><button class="button button-outline" id="cancel-jalali-calendar" type="button">انصراف</button></div>
+      </div>
+    </dialog>
+    <dialog id="photo-view-dialog" class="app-dialog photo-view-dialog" aria-labelledby="photo-view-title">
+      <div class="photo-view-content"><div class="dialog-head"><div><span class="section-kicker">مدرک سرویس</span><h2 id="photo-view-title">عکس فاکتور</h2></div><button class="close-button" id="close-photo-dialog" type="button" aria-label="بستن">×</button></div><img id="photo-view-image" alt="عکس فاکتور یا قطعه" /><a id="download-photo-link" class="button button-outline" download="factor.jpg">ذخیرهٔ عکس</a></div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script defer src="/main.js?v=29"></script>
+    <script defer src="/settings.js?v=1"></script>
+    <script defer src="/enhancements.js?v=32"></script>
+  </body>
+</html>
