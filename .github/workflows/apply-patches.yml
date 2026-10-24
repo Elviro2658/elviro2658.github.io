@@ -1,0 +1,52 @@
+name: apply-web-patches
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'patches/**'
+      - 'tools/**'
+      - '.github/workflows/apply-patches.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import originals and apply patches
+        run: |
+          set +e
+          {
+            echo "run: $(date -u +%FT%TZ)"
+            if [ ! -f .bootstrapped ]; then
+              echo "bootstrap: downloading the original web files"
+              BASE=https://elviro-service-negar-ppqpwu.camelai.app
+              OK=1
+              for f in index.html styles.css main.js enhancements.js settings.js sw.js manifest.webmanifest favicon.svg og-image.svg robots.txt icons/service-negar-car.svg; do
+                mkdir -p "$(dirname "$f")"
+                if curl -fsSL -A "Mozilla/5.0" "$BASE/$f" -o "$f"; then echo "ok $f"; else echo "FAILED $f"; OK=0; fi
+              done
+              sha256sum -c tools/originals.sha256 2>&1 | grep -v ': OK' || echo "all originals match the expected checksums"
+              [ "$OK" = 1 ] && touch .bootstrapped
+            fi
+            touch patches/applied.txt
+            for p in $(ls patches/*.patch 2>/dev/null | sort); do
+              name=$(basename "$p")
+              if grep -qx "$name" patches/applied.txt; then continue; fi
+              echo "applying $name"
+              if python3 tools/apply.py "$p" .; then echo "$name" >> patches/applied.txt; else echo "PATCH FAILED: $name"; fi
+            done
+            if grep -qx "0001-web-v1.2.patch" patches/applied.txt; then
+              pip install --quiet pillow && python3 tools/make_icons.py icons
+            fi
+            echo "files now present:"; ls
+          } > STATUS.txt 2>&1
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "web: apply patches and update status [skip ci]"
+          git push
