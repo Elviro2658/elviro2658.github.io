@@ -1,0 +1,188 @@
+#FILE enhancements.js
+#REPLACE
+nd:null,preset:"all"},autoBackupDbPromis
+#WITH
+nd:null,preset:"all",category:"all"},autoBackupDbPromis
+#END
+#REPLACE
+!hasKm
+#WITH
+false
+#END
+#REPLACE
+.filter(Boolean):[];return b;}
+  window.
+#WITH
+.filter(Boolean):[];b.fuel=Array.isArray(x.fuel)?x.fuel.map(normalizeFuel).filter(Boolean):[];return b;}
+  window.
+#END
+#REPLACE
+m(d.km)+'</span>':""].filter(Boolean).jo
+#WITH
+m(d.km)+'</span>':"",d.nextVisitDate?"مراجعهٔ بعدی "+escapeHtml(formatJalali(d.nextVisitDate)):""].filter(Boolean).jo
+#END
+#REPLACE
+photo?'<div class="document-actions">'+photo+'</div>'
+#WITH
+'<div class="document-actions">'+photo+"</div>",doneDate=d.kind==="insurance"?(d.paymentDate||d.startDate):d.inspectionDate,doneMarkup=doneDate?'<small class="document-done-date">انجام: '+escapeHtml(formatJalali(doneDate))+"</small>"
+#END
+#REPLACE
+ '+cls+'">'+escapeHtml(label)
+#WITH
+-col"><span class="document-status '+cls+'">'+escapeHtml(label)+"</span>"+doneMarkup
+#END
+#REPLACE
++(d.kind==="inspection"&&d.nextVisitDate?'<div class="document-dates"><span>مراجعهٔ بعدی: <strong>'+escapeHtml(formatJalali(d.nextVisitDate))+'</strong></span></div>':"")
+#WITH
+
+#END
+#REPLACE
+div class="service-meta service-due-line"><span>موعد بعدی: <strong>'+escapeHtml(due.detail)+'</strong></span></div>':"",part=(e.part||e.brand)?'<p class="service-part">'+escapeHtml([e.part,e.brand].filter(Boolean).join(" · "))+'</p>':"",note=e.note?'<p class="service-note">'+escapeHtml(e.note)+'</p>':
+#WITH
+span class="service-meta service-due-text">'+due.detail.split(" · ").map(function(p,i){return'<strong class="due-part">'+(i===0?"موعد بعدی: ":"")+escapeHtml(p)+"</strong>";}).join("")+"</span>":"",part='<p class="service-part">'+(escapeHtml([e.part,e.brand,e.note].filter(Boolean).join(" · "))||"&nbsp;")+'</p>',note=
+#END
+#REPLACE
+photoButton||resolvedAction?'<div
+#WITH
+'<div class="service-footer">'+(dueLine||'<span class="service-meta service-due-text">&nbsp;</span>')+'<span
+#END
+#REPLACE
+dAction+photoButton+'</div>':"",card='<article cla
+#WITH
+dAction+photoButton+"</span></div>",card='<article cla
+#END
+#REPLACE
+lass="service-date">'+escapeHtml(formatJ
+#WITH
+lass="service-date">تاریخ سرویس: '+escapeHtml(formatJ
+#END
+#REPLACE
+dueLine+note+
+#WITH
+
+#END
+#REPLACE
+if(preset==="week"){const p=todayIso().split("-").map(Number),today=new Date(p[0],p[1]-1,p[2]),offset=(today.getDay()+1)%7,start=new Date(today);start.setDate(start.getDate()-offset);const end=new Date(start);end.setDate(end.getDate()+6);return{start:expenseIso(start),end:expenseIso(end)};}if(preset==="month"){const p=jalaliParts(todayIso());return{start:parseJalali(String(p.year)+"/"+String(p.month).padStart(2,"0")+"/01"),end:toIso(p.year,p.month,monthDays(p.year,p.month))};}return{start:null,end:null
+#WITH
+const today=todayIso(),tp=today.split("-").map(Number),t0=new Date(tp[0],tp[1]-1,tp[2]),back=function(n){const d=new Date(t0);d.setDate(d.getDate()-n);return expenseIso(d);},y=jalaliParts(today).year;if(preset==="week")return{start:back(6),end:today,category:"all"};if(preset==="quarter")return{start:back(89),end:today,category:"all"};if(preset==="h1")return{start:toIso(y,1,1),end:toIso(y,6,monthDays(y,6)),category:"all"};if(preset==="h2")return{start:toIso(y,7,1),end:toIso(y,12,monthDays(y,12)),category:"all"};if(preset==="inspection")return{start:toIso(y,1,1),end:toIso(y,12,monthDays(y,12)),category:"inspection"};if(preset==="insurance"||preset==="service"||preset==="fuel")return{start:null,end:null,category:preset};return{start:null,end:null,category:"all"
+#END
+#REPLACE
+ge.end,preset:preset};q("#expense-filter
+#WITH
+ge.end,preset:preset,category:range.category||"all"};q("#expense-filter
+#END
+#REPLACE
+||end?"manual":"all"};updateExpenseFilte
+#WITH
+||end?"manual":"all",category:"all"};updateExpenseFilte
+#END
+#REPLACE
+terControls();const serviceItems=state.e
+#WITH
+terControls();const cat=expenseFilter.category||"all",fuelList=Array.isArray(state.fuel)?state.fuel:[],serviceItems=state.e
+#END
+#REPLACE
+date:e.date
+#WITH
+category:"service",date:e.date,cost:e.cost
+#END
+#REPLACE
+urn{kind:"document",date:d.kind==="insur
+#WITH
+urn{kind:"document",category:d.kind==="insurance"?"insurance":"inspection",date:d.kind==="insur
+#END
+#REPLACE
+document:d};}),all=serviceItems.concat(document
+#WITH
+cost:d.cost,document:d};}),fuelItems=fuelList.filter(function(f){return f.cost>0;}).map(function(f){return{kind:"fuel",category:"fuel",date:f.date,cost:f.cost,fuel:f};}),all=serviceItems.concat(documentItems,fuel
+#END
+#REPLACE
+lter(function(item){if(!item.date)return
+#WITH
+lter(function(item){if(cat!=="all"&&item.category!==cat)return false;if(!item.date)return
+#END
+#REPLACE
+(item.kind==="service"?item.entry.cost:item.document.cost);},0),label=q("#expenses-total-label")
+#WITH
+item.cost;},0),label=q("#expenses-total-label"),labels={week:"جمع هزینه‌های هفتهٔ اخیر",quarter:"جمع هزینه‌های سه ماه اخیر",insurance:"جمع هزینهٔ بیمه‌ها",inspection:"جمع معاینهٔ فنی امسال",service:"جمع تعمیرات و سرویس‌ها",h1:"جمع نیمهٔ اول امسال",h2:"جمع نیمهٔ دوم امسال",fuel:"جمع هزینهٔ بنزین و سی‌ان‌جی",manual:"جمع بازهٔ انتخابی"}
+#END
+#REPLACE
+expenseFilter.preset==="week"?"جمع هزینه‌های این هفته":expenseFilter.preset==="month"?"جمع هزینه‌های این ماه":expenseFilter.preset==="manual"?"جمع بازهٔ انتخابی":
+#WITH
+labels[expenseFilter.preset]||
+#END
+#REPLACE
+=q("#expenses-list");if(!filtered.length
+#WITH
+=q("#expenses-list"),rowOf=function(item){return item.kind==="service"?renderExpenseRow(item.entry):item.kind==="document"?renderDocumentExpense(item.document):window.renderFuelExpense(item.fuel);};if(!filtered.length
+#END
+#REPLACE
+بازهٔ زمانی دیگری انتخاب کنید یا فیلتر تاریخ
+#WITH
+فیلتر دیگری انتخاب کنید یا فیلتر
+#END
+#REPLACE
+ و معاینهٔ فنی
+#WITH
+، معاینهٔ فنی و بنزین
+#END
+#REPLACE
+);group.total+=item.kind==="service"?item.entry.cost:item.document.cost;});container.in
+#WITH
+);group.total+=item.cost;});container.in
+#END
+#REPLACE
+const rows=group.items.map(function(item){return item.kind==="service"?renderExpenseRow(item.entry):renderDocumentExpense(item.document);}).join(""),groupTotalLabel=expenseFilter.preset==="all"||expenseFilter.preset==="month"?"جمع ماه":"جمع این بازه";
+#WITH
+
+#END
+#REPLACE
+'+groupTotalLabel+'
+#WITH
+جمع ماه
+#END
+#REPLACE
+ense-month-items">'+rows+'</div></section>';
+#WITH
+ense-month-items">'+group.items.map(rowOf).join("")+'</div></section>';
+#END
+#REPLACE
+e.nextKm===null;serviceNextKmDefault=e.nextKm===null?Math.max(Number(e.km)||0,maxRecordedKm()):Number(e.nextKm)
+#WITH
+false;serviceNextKmDefault=null
+#END
+#REPLACE
+ing(e.laborCost||0);q("#next-km").value=String(serviceNextKmDefault);q("#next-date").value=e.nextDate?forma
+#WITH
+ing(e.laborCost||0);q("#next-km").value=(e.nextKm===null||e.nextKm===undefined)?"":String(e.nextKm);q("#next-date").value=e.nextDate?forma
+#END
+#REPLACE
+true;serviceNextKmDefault=currentServiceKm
+#WITH
+false;serviceNextKmDefault=null
+#END
+#REPLACE
+or-cost").value="0";q("#next-km").value=String(serviceNextKmDefault);q("#next-date").value="";q("#service-km
+#WITH
+or-cost").value="0";q("#next-km").value="";q("#next-date").value="";q("#service-km
+#END
+#REPLACE
+r-enabled").checked=true;q("#service-remind
+#WITH
+r-enabled").checked=false;q("#service-remind
+#END
+#REPLACE
+t);if(!input)return;const value=Number(toLat
+#WITH
+t);if(!input)return;let value=Number(toLat
+#END
+#REPLACE
+ts(input.value))||0;const min=target==="
+#WITH
+ts(input.value))||0;if(target==="next-km"&&!toLatinDigits(input.value).trim()){const serviceKmField=document.getElementById("service-km");value=Number(toLatinDigits(serviceKmField&&serviceKmField.value))||maxRecordedKm();}const min=target==="
+#END
+#REPLACE
+rviceNextKmAuto=false;updateKmReminderVi
+#WITH
+rviceNextKmAuto=false;const hasKmValue=!!toLatinDigits(e.target.value).trim(),kmBox=q("#service-km-reminder-enabled");if(kmBox)kmBox.checked=hasKmValue;updateKmReminderVi
+#END

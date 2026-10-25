@@ -1,0 +1,110 @@
+#FILE styles.css
+#REPLACE
+on:none!important}}
+
+#WITH
+on:none!important}}
+
+#battery-help[hidden]{display:none!important}
+
+/* ===== v1.1: کارت‌های یکسان؛ وضعیت موعد فقط رنگ را عوض می‌کند، نه اندازه و فونت ===== */
+.service-card{box-sizing:border-box;display:grid!important;grid-template-rows:28px 20px 20px 60px 44px;row-gap:2px;height:214px;padding:14px!important;overflow:hidden}
+.service-card .service-top{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:28px}
+.service-card .service-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px!important;font-weight:800}
+.service-card .service-date{flex:none;white-space:nowrap;font-size:11px!important}
+.service-card .service-part,.service-card .service-meta,.service-card .service-meta strong,.service-card .cost-breakdown>span{font-size:12px!important;line-height:20px!important}
+.service-card .service-part{margin:0!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.service-card .service-meta{margin:0!important;gap:0 10px!important}
+.service-card .service-meta strong{font-weight:700}
+.service-card .cost-breakdown{padding:4px 0!important;max-height:60px;overflow:hidden;align-content:center}
+.service-card .service-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;margin:0}
+.service-card .service-due-text{flex:1;min-width:0;display:block;margin:0!important}
+.service-card .service-due-text .due-part{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.service-card .service-actions{display:inline-flex!important;align-items:center;gap:6px;flex:none;margin:0!important;padding:0!important;border:0!important}
+.document-card{box-sizing:border-box;display:grid!important;grid-template-rows:64px 24px 24px 34px;row-gap:6px;height:196px;padding:14px!important;overflow:hidden}
+.document-card .document-card-top{align-items:flex-start;gap:9px;height:64px;overflow:hidden}
+.document-card .document-card-copy strong{font-size:14px!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.document-card .document-card-copy small{font-size:11px!important;line-height:18px!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:36px}
+.document-status-col{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex:none}
+.document-card .document-status{font-size:10px!important}
+.document-done-date{font-size:10px;color:#778a84;white-space:nowrap}
+html[data-theme="dark"] .document-done-date{color:#a9bbb4}
+.document-card .document-dates{margin:0!important;padding:0!important;min-height:24px;align-items:center;flex-wrap:nowrap;font-size:11px!important}
+.document-card .document-dates>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.document-card .document-dates strong{font-size:12px!important}
+.document-card .document-actions{min-height:34px;margin:0!important;padding:0!important;border:0!important;display:flex;align-items:center}
+.due-card .due-copy strong{font-size:14px!important}
+.due-card .due-copy small,.due-card .due-record-meta,.due-card .due-record-meta span{font-size:11px!important;line-height:1.6!important}
+.due-card .due-detail span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ===== v1.1: فهرست دستهٔ سرویس‌ها به‌صورت آکاردئونی ===== */
+.type-picker{position:relative;width:100%}
+.type-picker-current{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:10px 12px;border:1px solid rgba(120,150,140,.45);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:14px;text-align:start}
+.type-picker-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.type-picker-panel{margin-top:6px;max-height:min(52vh,420px);overflow-y:auto;border:1px solid rgba(120,150,140,.45);border-radius:10px;background:inherit}
+.type-picker-panel[hidden],.type-group-items[hidden]{display:none}
+.type-group-head,.type-item{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:9px 12px;border:0;background:transparent;color:inherit;font:inherit;text-align:start}
+.type-group-head{font-size:14px;font-weight:800;background:rgba(120,160,150,.12);border-top:1px solid rgba(120,150,140,.25)}
+.type-group-head:first-child{border-top:0}
+.type-group-head[aria-expanded="true"] .type-group-mark{transform:rotate(90deg)}
+.type-item{font-size:13px;font-weight:500;border-top:1px solid rgba(120,150,140,.18)}
+.type-item[aria-selected="true"]{font-weight:800;background:rgba(80,200,140,.16)}
+#test-reminder-help[hidden]{display:none!important}
+
+/* ===== v1.2: آیکون‌های نئونی، نوار ۵تایی و کارت‌های خلاصه ===== */
+.tab-button[data-view="dashboard"]{--ic:#35e0ff}.tab-button[data-view="services"]{--ic:#ffb547}.tab-button[data-view="insurance"]{--ic:#4be38a}.tab-button[data-view="inspection"]{--ic:#b58cff}.tab-button[data-view="expenses"]{--ic:#ff6fa5}
+.icon-km{--ic:#35e0ff}.icon-cost{--ic:#ffd84d}.icon-due{--ic:#ff7a59}.icon-fuel{--ic:#c6ff3d}
+html:not([data-theme="dark"]) .tab-button[data-view="dashboard"],html:not([data-theme="dark"]) .icon-km{--ic:#0097b8}
+html:not([data-theme="dark"]) .tab-button[data-view="services"]{--ic:#e58a00}
+html:not([data-theme="dark"]) .tab-button[data-view="insurance"]{--ic:#1fa95b}
+html:not([data-theme="dark"]) .tab-button[data-view="inspection"]{--ic:#8b5cf6}
+html:not([data-theme="dark"]) .tab-button[data-view="expenses"]{--ic:#e0457f}
+html:not([data-theme="dark"]) .icon-cost{--ic:#d4a100}html:not([data-theme="dark"]) .icon-due{--ic:#e8552f}html:not([data-theme="dark"]) .icon-fuel{--ic:#7fa800}
+.tabs{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:3px!important;overflow:visible}
+.tab-button{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:60px!important;padding:7px 2px!important;font-size:10.5px!important;line-height:1.25;text-align:center;white-space:normal}
+.tab-icon{width:23px;height:23px;fill:none;stroke:var(--ic);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px var(--ic))}
+.tab-button.is-active .tab-icon{filter:drop-shadow(0 0 3px var(--ic)) drop-shadow(0 0 8px var(--ic))}
+.tab-button:not(.is-active) .tab-icon{opacity:.85}
+.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+#month-cost-card[hidden]{display:block!important}
+.stat-icon{width:36px!important;height:36px!important;color:var(--ic);background:rgba(25,49,56,.06);box-shadow:0 0 16px -4px var(--ic),inset 0 0 0 1px rgba(120,160,150,.2)}
+html[data-theme="dark"] .stat-icon{background:rgba(255,255,255,.06)}
+.stat-icon-svg{width:22px!important;height:22px!important;fill:none;stroke:var(--ic);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 4px var(--ic))}
+.fuel-stat-card{cursor:pointer}
+.fuel-stat-card strong{font-size:17px!important}
+
+/* ===== v1.2: پمپ بنزین ===== */
+.fuel-dialog{width:min(100% - 24px,460px)}
+.fuel-body{display:grid;gap:14px;padding:4px 0 2px}
+.fuel-switch{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:14px;background:rgba(120,160,150,.14)}
+.fuel-switch button{min-height:46px;border:0;border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:15px;font-weight:700}
+.fuel-switch button[aria-selected="true"]{background:#0f2a2c;color:#c6ff3d;box-shadow:0 0 14px -3px #c6ff3d}
+.dispenser{display:grid;gap:10px;padding:14px;border-radius:18px;background:linear-gradient(#10181a,#0a1112);border:2px solid #2b3b3d;box-shadow:inset 0 0 24px #000a,0 6px 18px #0004}
+.dispenser-row{display:grid;gap:6px}
+.dispenser-label{font-size:12px;color:#8fb3a8}
+.dispenser-controls{display:grid;grid-template-columns:76px minmax(0,1fr) 76px;gap:8px;align-items:stretch}
+.dispenser-total .dispenser-controls{grid-template-columns:minmax(0,1fr)}
+.dispenser input{width:100%;min-width:0;height:56px;padding:0 10px;border:1px solid #28403b;border-radius:12px;background:#050a0b;color:#c6ff3d;font-family:"Courier New",ui-monospace,monospace;font-size:26px;font-weight:700;letter-spacing:1px;text-align:center;text-shadow:0 0 8px #c6ff3dcc;direction:ltr}
+.dispenser input::placeholder{color:#3d5a2a}
+.fuel-step{height:56px;border:1px solid #2e4a43;border-radius:12px;background:#142320;color:#c6ff3d;font:inherit;font-size:15px;font-weight:800;touch-action:none;user-select:none;-webkit-user-select:none}
+.fuel-step:active{background:#1f3a33}
+.fuel-actions{display:flex;flex-wrap:wrap;gap:8px}
+.fuel-actions .button-primary{flex:1}
+.fuel-actions [hidden]{display:none!important}
+.fuel-recent h3{margin:6px 0;font-size:13px}
+.fuel-recent .expense-row{margin-bottom:6px}
+
+/* ===== v1.2: فیلتر هزینه‌ها و دکمه‌های انتهای صفحه ===== */
+.expense-filter-toggle{display:flex;width:100%;min-height:46px;align-items:center;justify-content:space-between}
+.expense-filter-toggle.is-open .filter-arrow{transform:rotate(180deg)}
+.expense-filter-body{margin-top:10px}
+.expense-filter-body[hidden]{display:none}
+.expense-filter-presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.page-end-actions{display:flex;justify-content:center;gap:16px;margin:28px 0 10px}
+.circle-button{display:grid;width:48px;height:48px;padding:0;place-items:center;border:1px solid rgba(120,160,150,.45);border-radius:50%;background:#fff;color:inherit;box-shadow:0 0 14px -4px #35e0ff}
+html[data-theme="dark"] .circle-button{background:#1a2825}
+.circle-up svg{width:24px;height:24px;fill:none;stroke:#35e0ff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px #35e0ff)}
+.circle-app{overflow:hidden;border-color:#7c3aed;box-shadow:0 0 14px -3px #7c3aed}
+.circle-app img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover}
+
+#END

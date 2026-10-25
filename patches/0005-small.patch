@@ -1,0 +1,65 @@
+#FILE settings.js
+#REPLACE
+},true);
+#WITH
+else if(button.id==="test-reminder-button"){event.preventDefault();event.stopImmediatePropagation();try{const sent=bridge().scheduleTestReminder(10);if(typeof showToast==="function")showToast(sent?"اعلان آزمایشی تا ۱۰ ثانیهٔ دیگر می‌رسد.":"ابتدا اجازهٔ اعلان را از تنظیمات فعال کنید.");}catch(error){}}else if(button.id==="open-battery-settings"){event.preventDefault();event.stopImmediatePropagation();try{bridge().openBatterySettings();}catch(error){}}},true);const help=q("#battery-help"),api=bridge();if(help&&api&&typeof api.openBatterySettings==="function")help.hidden=false;const testHelp=q("#test-reminder-help");if(testHelp&&api&&typeof api.scheduleTestReminder==="function")testHelp.hidden=false;
+#END
+#FILE sw.js
+#REPLACE
+48
+#WITH
+52
+#END
+#REPLACE
+47", "/main.js?v=29", "/settings.js?v=1", "/enhancements.js?v=32
+#WITH
+50", "/main.js?v=32", "/settings.js?v=3", "/privacy.html", "/enhancements.js?v=34", "/service-picker.js?v=1", "/extras.js?v=1
+#END
+#FILE manifest.webmanifest
+#REPLACE
+f3f6f5
+#WITH
+2a0d6b
+#END
+#REPLACE
+     "purpose": "any maskable"
+    },
+   
+#WITH
+     "purpose": "any"
+    },
+    {
+      "src": "/icons/service-negar-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+   
+#END
+#REPLACE
+": "any"
+    }
+  ]
+}
+
+#WITH
+": "any"
+    }
+  ]
+}
+#END
+#FILE favicon.svg
+#REPLACE
+28 128">
+  <defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4b9c87"/><stop offset="1" stop-color="#164e50"/></linearGradient></defs>
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="#e5f2ed"/>
+  <path d="M18 78h92" stroke="#c4d7ce" stroke-width="7" stroke-linecap="round" stroke-dasharray="14 12"/>
+  <rect x="38" y="20" width="52" height="88" rx="19" fill="url(#b)" stroke="#ffffff" stroke-width="4"/>
+  <rect x="47" y="34" width="34" height="24" rx="9" fill="#bfe1d8"/>
+  <path d="M49 72h30v14H49z" fill="#2f7a6d"/>
+  <g fill="#16363a"><rect x="32" y="34" width="8" height="22" rx="4"/><rect x="88" y="34" width="8" height="22" rx="4"/><rect x="32" y="78" width="8" height="22" rx="4"/><rect x="88" y="78" width="8" height="22" rx="4"/></g>
+  <circle cx="64" cy="27" r="3" fill="#f4d08a"/>
+
+#WITH
+08 108"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2A0D6B"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><rect width="108" height="108" rx="24" fill="url(#g)"/><g fill="none" stroke-linecap="round"><path d="M33.2,72.0A24,24 0 1 1 74.8,72.0" stroke="#C6FF3D" stroke-opacity=".28" stroke-width="11"/><path d="M33.2,72.0A24,24 0 1 1 74.8,72.0" stroke="#C6FF3D" stroke-width="5.5"/><path d="M39.0,60.0L35.0,60.0M43.4,49.4L40.6,46.6M54.0,45.0L54.0,41.0M64.6,49.4L67.4,46.6M69.0,60.0L73.0,60.0" stroke="#E9FFB0" stroke-width="2"/><path d="M54,60L64.0,45.7" stroke="#fff" stroke-width="4.5"/><path d="M41,77h26" stroke="#C6FF3D" stroke-width="3.2"/></g><circle cx="54" cy="60" r="4.8" fill="#C6FF3D"/>
+#END

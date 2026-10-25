@@ -9,16 +9,22 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: apply-web-patches
+  cancel-in-progress: false
 jobs:
   apply:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Import originals and apply patches
         run: |
           set +e
           {
             echo "run: $(date -u +%FT%TZ)"
+            mkdir -p patches
             if [ ! -f .bootstrapped ]; then
               echo "bootstrap: downloading the original web files"
               BASE=https://elviro-service-negar-ppqpwu.camelai.app
@@ -37,7 +43,7 @@ jobs:
               echo "applying $name"
               if python3 tools/apply.py "$p" .; then echo "$name" >> patches/applied.txt; else echo "PATCH FAILED: $name"; fi
             done
-            if grep -qx "0001-web-v1.2.patch" patches/applied.txt; then
+            if [ -f icons/service-negar-app.svg ]; then
               pip install --quiet pillow && python3 tools/make_icons.py icons
             fi
             echo "files now present:"; ls
@@ -49,4 +55,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "web: apply patches and update status [skip ci]"
+          git pull --rebase origin main
           git push

@@ -1,0 +1,177 @@
+#FILE index.html
+#REPLACE
+="image/svg+xml" />
+    <link rel="style
+#WITH
+="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="style
+#END
+#REPLACE
+47
+#WITH
+50
+#END
+#REPLACE
+><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.1" fill="currentColor"/><path d="M12 9.9V3.2M10.2 13.1 5.1 17.3M13.8 13.1l5.1 4.2M4 9.8c2.2.1 4 .8 5.7 2M20 9.8c-2.2.1-4 .8-5.7 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round
+#WITH
+ aria-hidden="true"><rect x="2.8" y="7" width="18.4" height="10" rx="2.4"/><path d="M7.2 10.2v3.6M10.4 10.2v3.6M13.6 10.2v3.6M16.8 10.2v3.6
+#END
+#REPLACE
+id="month-cost-card" hidden><span class="stat-i
+#WITH
+id="month-cost-card"><span class="stat-i
+#END
+#REPLACE
+><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><text x="12" y="16.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="800" fill="currentColor">€</text
+#WITH
+ aria-hidden="true"><rect x="3.5" y="5.2" width="17" height="14.8" rx="2.6"/><path d="M8 3v3.6M16 3v3.6M3.5 10h17"/><circle cx="15.8" cy="15" r="2.4"/><path d="M15.8 13.8v2.4"/
+#END
+#REPLACE
+><path d="m6.1 4.2-2-1.6M17.9 4.2l2-1.6M7 20.2l-1.2 1.5M17 20.2l1.2 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8.5V13l3.1 1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round
+#WITH
+ aria-hidden="true"><circle cx="12" cy="13.2" r="6.9"/><path d="M12 9.6v3.9l2.5 1.6M4.9 5 2.8 7M19.1 5l2.1 2M7 20l-1.2 1.6M17 20l1.2 1.6
+#END
+#REPLACE
+د</small></article>
+      </section>
+
+  
+#WITH
+د</small></article>
+        <article class="stat-card fuel-stat-card" id="fuel-card" role="button" tabindex="0" aria-label="پمپ بنزین؛ ثبت سوخت‌گیری"><span class="stat-icon icon-fuel" aria-hidden="true"><svg class="stat-icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 20.5V5.6A1.6 1.6 0 0 1 7.1 4h6.3A1.6 1.6 0 0 1 15 5.6v14.9M4.2 20.5h11.6M7.8 7.6h4.8v3.4H7.8z"/><path d="M15 9.2h1.9a1.6 1.6 0 0 1 1.6 1.6v5.4a1.3 1.3 0 0 0 2.6 0V8.4l-2.4-2.2"/></svg></span><span class="stat-label">پمپ بنزین</span><strong id="fuel-stat">۰ لیتر</strong><small id="fuel-stat-sub">بنزین این ماه · لمس کنید</small></article>
+      </section>
+
+  
+#END
+#REPLACE
+ria-selected="true">نمای کلی</button>
+        <b
+#WITH
+ria-selected="true"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8.5 8.5 0 1 1 16 0"/><path d="M12 16.2 15.8 9.8"/><circle cx="12" cy="16.2" r="1.3"/><path d="M6.4 11.4l1 .7M12 6.8v1.3M17.6 11.4l-1 .7"/></svg><span>نمای کلی</span></button>
+        <b
+#END
+#REPLACE
+ia-selected="false">سرویس‌ها</button>
+        <b
+#WITH
+ia-selected="false"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>سرویس‌ها</span></button>
+        <b
+#END
+#REPLACE
+ia-selected="false">بیمه‌ها</button>
+        <b
+#WITH
+ia-selected="false"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 5.8v5.4c0 4.4 2.8 7.8 7 9.8 4.2-2 7-5.4 7-9.8V5.8L12 3z"/><path d="m8.7 12.2 2.3 2.3 4.4-4.6"/></svg><span>بیمه‌ها</span></button>
+        <b
+#END
+#REPLACE
+ia-selected="false">معاینهٔ فنی</button>
+        <b
+#WITH
+ia-selected="false"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.8 15.2v-2.6l1.5-3.3a1.8 1.8 0 0 1 1.7-1.1h5.6a1.8 1.8 0 0 1 1.6.9l1.6 2.3M2.8 15.2h2.4"/><circle cx="6.8" cy="15.8" r="1.4"/><circle cx="16.6" cy="15.6" r="3.6"/><path d="m19.3 18.3 2.4 2.4"/></svg><span>معاینهٔ فنی</span></button>
+        <b
+#END
+#REPLACE
+ia-selected="false">هزینه‌ها</button>
+      </nav>
+#WITH
+ia-selected="false"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14.5A1.5 1.5 0 0 1 20 9.5v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5V8zM4 8V7a2 2 0 0 1 2-2h2"/><path d="M20 12.5h-3.2a1.4 1.4 0 0 0 0 2.8H20"/><circle cx="15.6" cy="4.4" r="2.2"/></svg><span>هزینه‌ها</span></button>
+      </nav>
+#END
+#REPLACE
+تر تاریخ هزینه‌ها">
+          <div class
+#WITH
+تر تاریخ هزینه‌ها">
+          <button class="button button-outline expense-filter-toggle" id="expense-filter-toggle" type="button" aria-expanded="false" aria-controls="expense-filter-body"><span>فیلتر تاریخ</span><span class="filter-arrow" aria-hidden="true">▾</span></button>
+          <div id="expense-filter-body" class="expense-filter-body" hidden>
+          <div class
+#END
+#REPLACE
+بازه‌های پیشنهادی
+#WITH
+میانبرهای فیلتر
+#END
+#REPLACE
+این هفته
+#WITH
+هفتهٔ اخیر
+#END
+#REPLACE
+month" aria-pressed="false">هزینه‌های این ماه
+#WITH
+quarter" aria-pressed="false">هزینه‌های سه ماه اخیر
+#END
+#REPLACE
+ is-active" type="button" data-expense-filter="all" aria-pressed="true">همه
+#WITH
+" type="button" data-expense-filter="insurance" aria-pressed="false">هزینهٔ بیمه‌ها</button><button class="expense-filter-chip" type="button" data-expense-filter="inspection" aria-pressed="false">معاینهٔ فنی امسال</button><button class="expense-filter-chip" type="button" data-expense-filter="service" aria-pressed="false">تعمیرات و سرویس‌ها</button><button class="expense-filter-chip" type="button" data-expense-filter="h1" aria-pressed="false">نیمهٔ اول امسال</button><button class="expense-filter-chip" type="button" data-expense-filter="h2" aria-pressed="false">نیمهٔ دوم امسال</button><button class="expense-filter-chip" type="button" data-expense-filter="fuel" aria-pressed="false">بنزین
+#END
+#REPLACE
+"polite"></p></div>
+        </div>
+     
+#WITH
+"polite"></p></div>
+          </div>
+        </div>
+     
+#END
+#REPLACE
+ها</button></aside>
+        </section>
+ 
+#WITH
+ها</button></aside>
+          <aside class="notification-control" id="battery-help" hidden aria-label="بهینه‌سازی باتری"><div class="notification-copy"><strong>رسیدن به‌موقع اعلان‌ها</strong><span>در بعضی گوشی‌ها (شیائومی، سامسونگ، هوآوی) صرفه‌جویی باتری اعلان را دیر می‌رساند. بهینه‌سازی باتری را برای سرویس‌نگار خاموش کنید.</span></div><button class="button button-outline" id="open-battery-settings" type="button">تنظیمات باتری</button></aside>
+          <aside class="notification-control" id="test-reminder-help" hidden aria-label="آزمایش اعلان"><div class="notification-copy"><strong>آزمایش اعلان</strong><span>یک اعلان آزمایشی ۱۰ ثانیهٔ دیگر می‌فرستد تا ببینید یادآوری‌ها روی این دستگاه کار می‌کنند.</span></div><button class="button button-outline" id="test-reminder-button" type="button">اعلان آزمایشی</button></aside>
+        </section>
+ 
+#END
+#REPLACE
+ /></div></section>
+      </div>
+    </d
+#WITH
+ /></div></section>
+        <p class="settings-hint"><a href="/privacy.html">سیاست حریم خصوصی</a></p>
+      </div>
+    </d
+#END
+#REPLACE
+led" type="checkbox" checked /><span>یادآوری برا
+#WITH
+led" type="checkbox" /><span>یادآوری برا
+#END
+#REPLACE
+er-panel field-wide" hidden><label class="check
+#WITH
+er-panel field-wide"><label class="check
+#END
+#REPLACE
+led" type="checkbox" checked /><span>یادآوری پیش
+#WITH
+led" type="checkbox" /><span>یادآوری پیش
+#END
+#REPLACE
+29
+#WITH
+32
+#END
+#REPLACE
+src="/settings.js?v=1"></script>
+    <scr
+#WITH
+src="/settings.js?v=3"></script>
+    <scr
+#END
+#REPLACE
+2"></script>
+
+#WITH
+4"></script>
+    <script defer src="/service-picker.js?v=1"></script>
+    <script defer src="/extras.js?v=1"></script>
+
+#END

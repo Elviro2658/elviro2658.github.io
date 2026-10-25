@@ -1,0 +1,50 @@
+#FILE main.js
+#REPLACE
+ries:[],documents:[]};}
+function normali
+#WITH
+ries:[],documents:[],fuel:[]};}
+function normali
+#END
+#REPLACE
+return base;}
+
+#WITH
+base.fuel=Array.isArray(raw.fuel)?raw.fuel.map(normalizeFuel).filter(Boolean):[];return base;}
+function normalizeFuel(item){if(!item||typeof item!=="object"||typeof item.date!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(item.date))return null;const cost=Math.max(0,Math.round(Number(item.cost)||0));if(!cost)return null;return{id:typeof item.id==="string"&&item.id?item.id.slice(0,60):makeId("f"),date:item.date,fuel:item.fuel==="cng"?"cng":"petrol",liters:Math.max(0,Math.round((Number(item.liters)||0)*100)/100),price:Math.max(0,Math.round(Number(item.price)||0)),cost:cost,createdAt:typeof item.createdAt==="string"?item.createdAt:new Date().toISOString()};}
+
+#END
+#REPLACE
+return s+d.cost;},0);}
+function allCosts
+#WITH
+return s+d.cost;},0)+(state.fuel||[]).filter(function(f){return f.date.slice(0,7)===month;}).reduce(function(s,f){return s+f.cost;},0);}
+function allCosts
+#END
+#REPLACE
+return s+d.cost;},0);}
+function vehicleD
+#WITH
+return s+d.cost;},0)+(state.fuel||[]).reduce(function(s,f){return s+f.cost;},0);}
+function vehicleD
+#END
+#REPLACE
+rdMeta='<span>تاریخ ثبت: '+escapeHtml(forma
+#WITH
+rdMeta='<span>تاریخ سرویس: '+escapeHtml(forma
+#END
+#REPLACE
+>'+escapeHtml(d.detail
+#WITH
+ class="due-detail">'+(function(p){return'<span>'+escapeHtml(p[0]||"")+'</span><span>'+(p[1]?escapeHtml(p[1]):"&nbsp;")+"</span>";})(d.detail.split(" · ")
+#END
+#REPLACE
+ts(input.value))||0;if(button.dataset.km
+#WITH
+ts(input.value))||0;if(id==="next-km"&&!toLatinDigits(input.value).trim()){const serviceKmField=document.getElementById("service-km");value=Number(toLatinDigits(serviceKmField&&serviceKmField.value))||maxRecordedKm();}if(button.dataset.km
+#END
+#REPLACE
+filename,text,mime){const blob=new Blob(
+#WITH
+filename,text,mime){try{const api=window.ElviroNative;if(api&&typeof api.saveTextFile==="function"){api.saveTextFile(filename,String(mime||"application/json").split(";")[0],text);return;}}catch(error){}const blob=new Blob(
+#END

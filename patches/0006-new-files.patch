@@ -1,0 +1,394 @@
+#NEWFILE extras.js
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  function digits(v) { return String(toLatinDigits(String(v == null ? "" : v))).replace(/[٬,\s]/g, ""); }
+  function num(v) { var n = Number(digits(v).replace(/٫/g, ".").replace(/[^\d.]/g, "")); return isFinite(n) ? n : 0; }
+  function fa(n) { return toPersianDigits(String(n)); }
+
+  /* ---- یادآوری طبق تاریخ: با وارد شدن تاریخ تیک می‌خورد و با پاک شدن آن برمی‌دارد ---- */
+  function syncDateReminder() {
+    var field = $("#next-date"), box = $("#service-reminder-enabled");
+    if (field && box) box.checked = !!digits(field.value);
+  }
+  ["input", "change"].forEach(function (type) {
+    document.addEventListener(type, function (event) {
+      if (event.target && event.target.id === "next-date") syncDateReminder();
+    }, true);
+  });
+  var openService = window.openServiceDialog;
+  if (typeof openService === "function") {
+    window.openServiceDialog = function () {
+      var result = openService.apply(this, arguments);
+      if (!arguments[0]) { var box = $("#service-reminder-enabled"); if (box) box.checked = false; }
+      return result;
+    };
+  }
+
+  /* ---- انتهای هر صفحه: دو دکمهٔ دایره‌ای ---- */
+  var UP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>';
+  function addEndActions() {
+    document.querySelectorAll(".view-panel").forEach(function (panel) {
+      if (panel.querySelector(".page-end-actions")) return;
+      var box = document.createElement("div");
+      box.className = "page-end-actions";
+      box.innerHTML = '<button type="button" class="circle-button circle-up" data-scroll="tabs" aria-label="رفتن به ابتدای این بخش">' + UP + '</button>' +
+        '<button type="button" class="circle-button circle-app" data-scroll="home" aria-label="بازگشت به نمای کلی"><img src="/icons/service-negar-app.svg" alt="" width="32" height="32"></button>';
+      panel.appendChild(box);
+    });
+  }
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest && event.target.closest("[data-scroll]");
+    if (!button) return;
+    if (button.dataset.scroll === "tabs") {
+      var tabs = $(".tabs");
+      if (tabs) tabs.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      var home = $("#brand-home-link");
+      if (home) home.click();
+      else { var dash = $('.tab-button[data-view="dashboard"]'); if (dash) dash.click(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+    }
+  });
+
+  /* ---- فیلتر تاریخ هزینه‌ها: پیش‌فرض بسته ---- */
+  document.addEventListener("click", function (event) {
+    var toggle = event.target.closest && event.target.closest("#expense-filter-toggle");
+    if (!toggle) return;
+    var body = $("#expense-filter-body"), open = body.hidden;
+    body.hidden = !open;
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.classList.toggle("is-open", open);
+  });
+
+  /* ---- پمپ بنزین ---- */
+  var TYPES = {
+    petrol: { name: "بنزین", unit: "لیتر", qty: "مقدار بنزین (لیتر)", price: "قیمت هر لیتر (تومان)" },
+    cng: { name: "سی‌ان‌جی", unit: "متر مکعب", qty: "مقدار سی‌ان‌جی (متر مکعب)", price: "قیمت هر متر مکعب (تومان)" }
+  };
+  var fuelType = "petrol", editingId = null, totalManual = false, deleteArmed = null;
+  var drafts = { petrol: { qty: "", price: "", total: "" }, cng: { qty: "", price: "", total: "" } };
+  var dialog;
+
+  function fuelList() { if (!Array.isArray(state.fuel)) state.fuel = []; return state.fuel; }
+
+  function buildDialog() {
+    dialog = document.createElement("dialog");
+    dialog.id = "fuel-dialog";
+    dialog.className = "app-dialog fuel-dialog";
+    dialog.setAttribute("aria-labelledby", "fuel-dialog-title");
+    dialog.innerHTML =
+      '<div class="dialog-head"><div><span class="section-kicker">پمپ بنزین</span><h2 id="fuel-dialog-title">ثبت سوخت‌گیری</h2></div><button class="close-button" type="button" data-fuel="close" aria-label="بستن">×</button></div>' +
+      '<div class="fuel-body">' +
+      '<div class="fuel-switch" role="tablist" aria-label="نوع سوخت"><button type="button" role="tab" data-fuel-type="petrol" aria-selected="true">بنزین</button><button type="button" role="tab" data-fuel-type="cng" aria-selected="false">سی‌ان‌جی</button></div>' +
+      '<div class="dispenser">' +
+      '<div class="dispenser-row"><span class="dispenser-label" id="fuel-qty-label"></span><div class="dispenser-controls"><button class="fuel-step" type="button" data-fuel-step="fuel-qty" data-step="1" aria-label="یک واحد بیشتر">+۱</button><input id="fuel-qty" type="text" inputmode="decimal" autocomplete="off" aria-labelledby="fuel-qty-label" placeholder="۰" /><button class="fuel-step" type="button" data-fuel-step="fuel-qty" data-step="-1" aria-label="یک واحد کمتر">−۱</button></div></div>' +
+      '<div class="dispenser-row"><span class="dispenser-label" id="fuel-price-label"></span><div class="dispenser-controls"><button class="fuel-step" type="button" data-fuel-step="fuel-price" data-step="1000" aria-label="هزار تومان بیشتر">+۱٬۰۰۰</button><input id="fuel-price" type="text" inputmode="numeric" autocomplete="off" aria-labelledby="fuel-price-label" placeholder="۰" /><button class="fuel-step" type="button" data-fuel-step="fuel-price" data-step="-1000" aria-label="هزار تومان کمتر">−۱٬۰۰۰</button></div></div>' +
+      '<div class="dispenser-row dispenser-total"><span class="dispenser-label" id="fuel-total-label">مجموع هزینه (تومان)</span><div class="dispenser-controls"><input id="fuel-total" type="text" inputmode="numeric" autocomplete="off" aria-labelledby="fuel-total-label" placeholder="۰" /></div></div>' +
+      '</div>' +
+      '<label class="field fuel-date-field"><span>تاریخ سوخت‌گیری</span><div class="date-input-row"><input id="fuel-date" inputmode="numeric" autocomplete="off" /><button class="date-picker-button" type="button" data-calendar="fuel-date" aria-label="انتخاب تاریخ از تقویم">▦</button></div></label>' +
+      '<p id="fuel-error" class="form-error" role="alert" aria-live="polite"></p>' +
+      '<div class="fuel-actions"><button class="button button-primary" type="button" data-fuel="save">ذخیره</button><button class="button button-outline" type="button" data-fuel="delete" hidden>حذف</button><button class="button button-outline" type="button" data-fuel="close">انصراف</button></div>' +
+      '<div class="fuel-recent" id="fuel-recent"></div></div>';
+    document.body.appendChild(dialog);
+  }
+
+  function fmt(n) { return n > 0 ? formatNumber(n) : ""; }
+  function readDraft() { var d = drafts[fuelType]; d.qty = $("#fuel-qty").value; d.price = $("#fuel-price").value; d.total = $("#fuel-total").value; d.manual = totalManual; }
+  function writeDraft() {
+    var d = drafts[fuelType], t = TYPES[fuelType];
+    $("#fuel-qty").value = d.qty; $("#fuel-price").value = d.price; $("#fuel-total").value = d.total; totalManual = !!d.manual;
+    $("#fuel-qty-label").textContent = t.qty; $("#fuel-price-label").textContent = t.price;
+    dialog.querySelectorAll("[data-fuel-type]").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.fuelType === fuelType ? "true" : "false"); });
+  }
+  function recalcTotal() {
+    if (totalManual) return;
+    var q = num($("#fuel-qty").value), p = num($("#fuel-price").value);
+    $("#fuel-total").value = q > 0 && p > 0 ? formatNumber(Math.round(q * p)) : "";
+  }
+  function stepField(id, step) {
+    var el = $("#" + id), v = num(el.value) + step;
+    if (v < 0) v = 0;
+    el.value = id === "fuel-qty" ? (v > 0 ? fa(Math.round(v * 100) / 100) : "") : fmt(v);
+    recalcTotal();
+  }
+  /* نگه‌داشتن دکمه: سرعت به‌تدریج بالا می‌رود؛ تپ کوتاه فقط یک واحد */
+  var holdTimer = null, holdTicks = 0, heldButton = null, suppressClick = false;
+  function stopHold() { clearTimeout(holdTimer); holdTimer = null; heldButton = null; }
+  function holdTick() {
+    if (!heldButton) return;
+    stepField(heldButton.dataset.fuelStep, Number(heldButton.dataset.step));
+    holdTicks += 1;
+    var delay = holdTicks < 6 ? 140 : holdTicks < 18 ? 80 : 40;
+    holdTimer = setTimeout(holdTick, delay);
+  }
+  document.addEventListener("pointerdown", function (event) {
+    var button = event.target.closest && event.target.closest("[data-fuel-step]");
+    if (!button) return;
+    event.preventDefault();
+    suppressClick = true;
+    stopHold();
+    heldButton = button; holdTicks = 0;
+    stepField(button.dataset.fuelStep, Number(button.dataset.step));
+    holdTimer = setTimeout(holdTick, 380);
+  });
+  ["pointerup", "pointercancel", "pointerleave", "contextmenu"].forEach(function (type) { document.addEventListener(type, stopHold, true); });
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest && event.target.closest("[data-fuel-step]");
+    if (!button) return;
+    if (suppressClick) { suppressClick = false; return; }
+    stepField(button.dataset.fuelStep, Number(button.dataset.step)); // کیبورد
+  });
+
+  function render() {
+    var list = fuelList().slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)) || String(b.createdAt || "").localeCompare(String(a.createdAt || "")); }).slice(0, 6);
+    $("#fuel-recent").innerHTML = list.length ? '<h3>آخرین ثبت‌ها</h3>' + list.map(function (f) { return window.renderFuelExpense(f); }).join("") : "";
+  }
+  function openFuel(id) {
+    if (!dialog) buildDialog();
+    editingId = id || null; deleteArmed = null; totalManual = false;
+    drafts = { petrol: { qty: "", price: "", total: "" }, cng: { qty: "", price: "", total: "" } };
+    var rec = id ? fuelList().filter(function (f) { return f.id === id; })[0] : null;
+    fuelType = rec ? rec.fuel : "petrol";
+    if (rec) { drafts[fuelType] = { qty: rec.liters ? fa(rec.liters) : "", price: fmt(rec.price), total: fmt(rec.cost), manual: !(rec.liters > 0 && rec.price > 0 && Math.round(rec.liters * rec.price) === rec.cost) }; }
+    writeDraft();
+    $("#fuel-date").value = formatJalaliInput(rec ? rec.date : todayIso());
+    $("#fuel-error").textContent = "";
+    var del = dialog.querySelector('[data-fuel="delete"]'); del.hidden = !rec; del.textContent = "حذف";
+    dialog.querySelector("#fuel-dialog-title").textContent = rec ? "ویرایش سوخت‌گیری" : "ثبت سوخت‌گیری";
+    render();
+    openDialog(dialog);
+  }
+  window.openFuelDialog = openFuel;
+
+  function saveFuel() {
+    readDraft();
+    var q = num($("#fuel-qty").value), p = num($("#fuel-price").value), total = num($("#fuel-total").value), err = $("#fuel-error");
+    if (!totalManual && q > 0 && p > 0) total = Math.round(q * p);
+    var iso = parseJalali($("#fuel-date").value.trim());
+    if (!iso) { err.textContent = "تاریخ معتبر نیست؛ از تقویم انتخاب کنید."; return; }
+    if (!(total > 0)) { err.textContent = "مجموع هزینه را وارد کنید یا مقدار و قیمت هر واحد را کامل کنید."; return; }
+    var list = fuelList(), old = editingId ? list.filter(function (f) { return f.id === editingId; })[0] : null;
+    var rec = { id: old ? old.id : makeId("f"), date: iso, fuel: fuelType, liters: Math.round(q * 100) / 100, price: Math.round(p), cost: Math.round(total), createdAt: old ? old.createdAt : new Date().toISOString() };
+    if (old) list[list.indexOf(old)] = rec; else list.push(rec);
+    if (saveState() !== false) { closeDialog(dialog); render_all(); showToast("سوخت‌گیری ثبت شد."); }
+  }
+  function render_all() { if (typeof window.render === "function") window.render(); }
+
+  document.addEventListener("click", function (event) {
+    var t = event.target;
+    if (!t.closest) return;
+    if (t.closest("#fuel-card")) { openFuel(); return; }
+    var typeButton = t.closest("[data-fuel-type]");
+    if (typeButton && dialog && dialog.contains(typeButton)) { readDraft(); fuelType = typeButton.dataset.fuelType; writeDraft(); return; }
+    var action = t.closest("[data-fuel]");
+    if (action && dialog && dialog.contains(action)) {
+      var a = action.dataset.fuel;
+      if (a === "close") closeDialog(dialog);
+      else if (a === "save") saveFuel();
+      else if (a === "delete") {
+        if (deleteArmed !== editingId) { deleteArmed = editingId; action.textContent = "تأیید حذف"; setTimeout(function () { if (deleteArmed === editingId) { deleteArmed = null; action.textContent = "حذف"; } }, 3500); return; }
+        state.fuel = fuelList().filter(function (f) { return f.id !== editingId; });
+        if (saveState() !== false) { closeDialog(dialog); render_all(); showToast("سوخت‌گیری حذف شد."); }
+      }
+      return;
+    }
+    var row = t.closest('[data-record-card="fuel"]');
+    if (row) { event.preventDefault(); event.stopImmediatePropagation(); if (dialog && dialog.open) closeDialog(dialog); openFuel(row.dataset.id); }
+  }, true);
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    var card = event.target.closest && event.target.closest("#fuel-card");
+    if (card) { event.preventDefault(); openFuel(); return; }
+    var row = event.target.closest && event.target.closest('[data-record-card="fuel"]');
+    if (row) { event.preventDefault(); event.stopImmediatePropagation(); openFuel(row.dataset.id); }
+  }, true);
+  document.addEventListener("input", function (event) {
+    var id = event.target && event.target.id;
+    if (id === "fuel-qty" || id === "fuel-price") { totalManual = false; recalcTotal(); }
+    else if (id === "fuel-total") totalManual = true;
+  });
+  document.addEventListener("focusout", function (event) {
+    var id = event.target && event.target.id;
+    if (id === "fuel-price" || id === "fuel-total") { var n = num(event.target.value); event.target.value = fmt(n); }
+    else if (id === "fuel-qty") { var q = num(event.target.value); event.target.value = q > 0 ? fa(Math.round(q * 100) / 100) : ""; }
+  });
+
+  window.renderFuelExpense = function (f) {
+    var t = TYPES[f.fuel] || TYPES.petrol, detail = [formatJalali(f.date)];
+    if (f.liters > 0) detail.push(fa(f.liters) + " " + t.unit);
+    if (f.price > 0) detail.push(formatNumber(f.price) + " تومان برای هر " + t.unit);
+    return '<article class="expense-row fuel-expense" data-record-card="fuel" data-id="' + escapeHtml(f.id) + '" role="button" tabindex="0" aria-label="ویرایش ' + escapeHtml(t.name) + '"><div class="expense-left"><strong>' + escapeHtml(t.name) + '</strong><small>' + escapeHtml(detail.join(" · ")) + '</small></div><span class="expense-amount">' + formatMoney(f.cost) + '</span></article>';
+  };
+
+  function renderFuelStat() {
+    var cur = jalaliParts(todayIso()), petrol = 0, cng = 0;
+    fuelList().forEach(function (f) {
+      var p = jalaliParts(f.date);
+      if (!p || p.year !== cur.year || p.month !== cur.month) return;
+      if (f.fuel === "cng") cng += f.liters; else petrol += f.liters;
+    });
+    var value = $("#fuel-stat"), sub = $("#fuel-stat-sub");
+    if (!value || !sub) return;
+    var fix = function (n) { return fa(Math.round(n * 10) / 10); };
+    value.textContent = fix(petrol) + " لیتر";
+    sub.textContent = cng > 0 ? fix(cng) + " متر مکعب سی‌ان‌جی" : "بنزین این ماه · لمس کنید";
+  }
+  var priorRender = window.render;
+  if (typeof priorRender === "function") {
+    window.render = function () { var result = priorRender.apply(this, arguments); renderFuelStat(); return result; };
+  }
+
+  addEndActions();
+  renderFuelStat();
+})();
+
+#END
+#NEWFILE service-picker.js
+(function () {
+  "use strict";
+  var select = document.getElementById("service-type");
+  if (!select || select.dataset.pickerReady) return;
+  select.dataset.pickerReady = "1";
+
+  var wrap = document.createElement("div");
+  wrap.className = "type-picker";
+  var current = document.createElement("button");
+  current.type = "button";
+  current.className = "type-picker-current";
+  current.setAttribute("aria-haspopup", "listbox");
+  current.setAttribute("aria-expanded", "false");
+  var label = document.createElement("span");
+  label.className = "type-picker-label";
+  var arrow = document.createElement("span");
+  arrow.setAttribute("aria-hidden", "true");
+  arrow.textContent = "▾";
+  current.appendChild(label);
+  current.appendChild(arrow);
+  var panel = document.createElement("div");
+  panel.className = "type-picker-panel";
+  panel.hidden = true;
+  panel.setAttribute("role", "listbox");
+  wrap.appendChild(current);
+  wrap.appendChild(panel);
+  select.style.cssText = "position:absolute;opacity:0;pointer-events:none;width:1px;height:1px";
+  select.tabIndex = -1;
+  select.setAttribute("aria-hidden", "true");
+  select.parentNode.appendChild(wrap);
+
+  function selectedText() {
+    var option = select.options[select.selectedIndex];
+    return option ? option.textContent : "انتخاب نوع سرویس";
+  }
+  function refresh() {
+    label.textContent = selectedText();
+    Array.prototype.forEach.call(panel.querySelectorAll(".type-item"), function (item) {
+      item.setAttribute("aria-selected", item.dataset.value === select.value ? "true" : "false");
+    });
+  }
+  function closePanel() {
+    panel.hidden = true;
+    current.setAttribute("aria-expanded", "false");
+  }
+  function addGroup(title, options) {
+    var head = document.createElement("button");
+    head.type = "button";
+    head.className = "type-group-head";
+    head.setAttribute("aria-expanded", "false");
+    var text = document.createElement("span");
+    text.textContent = title;
+    var mark = document.createElement("span");
+    mark.className = "type-group-mark";
+    mark.setAttribute("aria-hidden", "true");
+    mark.textContent = "▸";
+    head.appendChild(text);
+    head.appendChild(mark);
+    var items = document.createElement("div");
+    items.className = "type-group-items";
+    items.hidden = true;
+    options.forEach(function (option) {
+      var item = document.createElement("button");
+      item.type = "button";
+      item.className = "type-item";
+      item.setAttribute("role", "option");
+      item.dataset.value = option.value;
+      item.textContent = option.textContent;
+      items.appendChild(item);
+    });
+    panel.appendChild(head);
+    panel.appendChild(items);
+  }
+  function build() {
+    panel.innerHTML = "";
+    var loose = [];
+    Array.prototype.forEach.call(select.children, function (node) {
+      if (node.tagName === "OPTGROUP") addGroup(node.label, Array.prototype.slice.call(node.children));
+      else if (node.tagName === "OPTION") loose.push(node);
+    });
+    if (loose.length) addGroup("سایر موارد ثبت‌شده", loose);
+    refresh();
+  }
+
+  current.addEventListener("click", function () {
+    if (panel.hidden) {
+      build();
+      panel.hidden = false;
+      current.setAttribute("aria-expanded", "true");
+    } else closePanel();
+  });
+  panel.addEventListener("click", function (event) {
+    var head = event.target.closest(".type-group-head");
+    if (head) {
+      var items = head.nextElementSibling;
+      var open = items.hidden;
+      items.hidden = !open;
+      head.setAttribute("aria-expanded", open ? "true" : "false");
+      return;
+    }
+    var item = event.target.closest(".type-item");
+    if (!item) return;
+    select.value = item.dataset.value;
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+    refresh();
+    closePanel();
+  });
+  document.addEventListener("click", function (event) {
+    if (!panel.hidden && !wrap.contains(event.target)) closePanel();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !panel.hidden) closePanel();
+  });
+
+  var original = window.openServiceDialog;
+  if (typeof original === "function") {
+    window.openServiceDialog = function () {
+      var result = original.apply(this, arguments);
+      closePanel();
+      refresh();
+      return result;
+    };
+  }
+  refresh();
+})();
+
+#END
+#NEWFILE privacy.html
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>سیاست حریم خصوصی سرویس‌نگار</title>
+<style>body{font-family:Vazirmatn,Tahoma,sans-serif;line-height:2;max-width:640px;margin:0 auto;padding:20px;background:#f3f6f5;color:#15292b}h1{font-size:22px}h2{font-size:17px;margin-top:24px}a{color:#164e50}@media(prefers-color-scheme:dark){body{background:#0f1f22;color:#e6efee}a{color:#7fd3c9}}</style></head>
+<body><h1>سیاست حریم خصوصی سرویس‌نگار</h1>
+<p>سرویس‌نگار دفترچهٔ آفلاین خودرو است. اطلاعاتی که وارد می‌کنید (سرویس‌ها، کارکرد، هزینه‌ها، بیمه‌ها، معاینهٔ فنی و عکس مدارک) فقط روی همین دستگاه ذخیره می‌شود.</p>
+<h2>اطلاعاتی که جمع‌آوری نمی‌کنیم</h2>
+<p>حساب کاربری وجود ندارد. برنامه اطلاعات شخصی، موقعیت مکانی، مخاطبین یا عکس‌های شما را به سرور ارسال نمی‌کند و ابزار تبلیغاتی یا ردیابی در آن به کار نرفته است.</p>
+<h2>مجوزهای برنامه</h2>
+<p><strong>اعلان‌ها:</strong> برای نمایش یادآوری سررسید سرویس، بیمه و معاینهٔ فنی. زمان‌بندی روی خود دستگاه انجام می‌شود.<br><strong>زنگ‌های دقیق و راه‌اندازی دستگاه:</strong> برای اینکه یادآوری‌ها سر وقت برسند و بعد از روشن‌شدن دوباره گوشی از نو زمان‌بندی شوند.<br><strong>اینترنت:</strong> برای باز کردن پیوندهای بیرونی و دریافت به‌روزرسانی فایل‌های برنامه، در صورت نیاز.</p>
+<h2>پشتیبان‌گیری و حذف اطلاعات</h2>
+<p>نسخهٔ پشتیبان را خودتان می‌سازید و محل ذخیرهٔ آن را انتخاب می‌کنید. با حذف برنامه یا پاک‌کردن داده‌های آن، اطلاعات ذخیره‌شده از بین می‌رود؛ پس پیش از آن پشتیبان بگیرید.</p>
+<h2>تماس</h2>
+<p>برای پرسش دربارهٔ این سیاست: <strong>[نشانی ایمیل یا راه ارتباطی خود را اینجا بنویسید]</strong></p>
+<p><a href="/">بازگشت به برنامه</a></p></body></html>
+
+#END
+#NEWFILE icons/service-negar-app.svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2A0D6B"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><rect width="108" height="108" rx="24" fill="url(#g)"/><g fill="none" stroke-linecap="round"><path d="M33.2,72.0A24,24 0 1 1 74.8,72.0" stroke="#C6FF3D" stroke-opacity=".28" stroke-width="11"/><path d="M33.2,72.0A24,24 0 1 1 74.8,72.0" stroke="#C6FF3D" stroke-width="5.5"/><path d="M39.0,60.0L35.0,60.0M43.4,49.4L40.6,46.6M54.0,45.0L54.0,41.0M64.6,49.4L67.4,46.6M69.0,60.0L73.0,60.0" stroke="#E9FFB0" stroke-width="2"/><path d="M54,60L64.0,45.7" stroke="#fff" stroke-width="4.5"/><path d="M41,77h26" stroke="#C6FF3D" stroke-width="3.2"/></g><circle cx="54" cy="60" r="4.8" fill="#C6FF3D"/></svg>
+
+#END
