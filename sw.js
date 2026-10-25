@@ -1,5 +1,5 @@
-const CACHE_NAME = "elviro-service-negar-v48";
-const CORE_ASSETS = ["/", "/index.html", "/styles.css?v=47", "/main.js?v=29", "/settings.js?v=1", "/enhancements.js?v=32", "/manifest.webmanifest", "/icons/service-negar-car.svg", "/favicon.svg", "/icons/service-negar-192.png", "/icons/service-negar-512.png"];
+const CACHE_NAME = "elviro-service-negar-v52";
+const CORE_ASSETS = ["/", "/index.html", "/styles.css?v=50", "/main.js?v=32", "/settings.js?v=3", "/privacy.html", "/enhancements.js?v=34", "/service-picker.js?v=1", "/extras.js?v=1", "/manifest.webmanifest", "/icons/service-negar-car.svg", "/favicon.svg", "/icons/service-negar-192.png", "/icons/service-negar-512.png"];
 
 self.addEventListener("install", function (event) {
   event.waitUntil(caches.open(CACHE_NAME).then(function (cache) { return cache.addAll(CORE_ASSETS); }).then(function () { return self.skipWaiting(); }));

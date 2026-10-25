@@ -1,30 +1,32 @@
-run: 2026-10-24T21:43:50Z
-bootstrap: downloading the original web files
-ok index.html
-ok styles.css
-ok main.js
-ok enhancements.js
-ok settings.js
-ok sw.js
-ok manifest.webmanifest
-ok favicon.svg
-ok og-image.svg
-ok robots.txt
-ok icons/service-negar-car.svg
-all originals match the expected checksums
-touch: cannot touch 'patches/applied.txt': No such file or directory
-grep: patches/applied.txt: No such file or directory
+run: 2026-10-25T08:22:16Z
+applying 0001-index.patch
+applied 26 replacements in 1 files
+applying 0002-styles.patch
+applied 1 replacements in 1 files
+applying 0003-main.patch
+applied 8 replacements in 1 files
+applying 0004-enhancements.patch
+applied 37 replacements in 1 files
+applying 0005-small.patch
+applied 7 replacements in 4 files
+applying 0006-new-files.patch
+applied 0 replacements in 0 files
+icons written to icons
 files now present:
 README.md
 STATUS.txt
 enhancements.js
+extras.js
 favicon.svg
 icons
 index.html
 main.js
 manifest.webmanifest
 og-image.svg
+patches
+privacy.html
 robots.txt
+service-picker.js
 settings.js
 styles.css
 sw.js

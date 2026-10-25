@@ -1,0 +1,6 @@
+0001-index.patch
+0002-styles.patch
+0003-main.patch
+0004-enhancements.patch
+0005-small.patch
+0006-new-files.patch
