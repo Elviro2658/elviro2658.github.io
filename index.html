@@ -10,7 +10,7 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/styles.css?v=50" />
+    <link rel="stylesheet" href="/styles.css?v=51" />
     <title>سرویس‌نگار | دفترچهٔ خودرو</title>
   </head>
   <body>
@@ -34,7 +34,7 @@
           <p id="vehicle-meta">مشخصات خودرو را وارد کنید تا دفترچه آماده شود.</p>
           <button class="button button-glass" id="edit-vehicle-button" type="button">تنظیم مشخصات خودرو <span aria-hidden="true">←</span></button>
         </div>
-        <div class="vehicle-art" aria-hidden="true"><img class="vehicle-hero-image" src="/icons/service-negar-car.svg" width="460" height="280" alt="" /></div>
+        <div class="vehicle-art car-stage" role="img" aria-label="نمای سه‌بعدی خودرو؛ برای چرخاندن بکشید"><canvas id="car-canvas" width="460" height="264"></canvas><span class="car-caption" id="car-caption"></span><span class="car-hint" aria-hidden="true">↔ بکشید تا بچرخد</span></div>
       </section>
 
       <section class="stats-grid" aria-label="خلاصهٔ خودرو">
@@ -244,10 +244,12 @@
     </dialog>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
-    <script defer src="/main.js?v=32"></script>
+    <script defer src="/main.js?v=33"></script>
     <script defer src="/settings.js?v=3"></script>
-    <script defer src="/enhancements.js?v=34"></script>
+    <script defer src="/enhancements.js?v=35"></script>
     <script defer src="/service-picker.js?v=1"></script>
-    <script defer src="/extras.js?v=1"></script>
+    <script defer src="/extras.js?v=2"></script>
+    <script defer src="/car3d.js?v=1"></script>
+    <script defer src="/hero.js?v=1"></script>
   </body>
 </html>

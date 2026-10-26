@@ -4,3 +4,6 @@
 0004-enhancements.patch
 0005-small.patch
 0006-new-files.patch
+0007-index.patch
+0008-styles.patch
+0009-scripts.patch

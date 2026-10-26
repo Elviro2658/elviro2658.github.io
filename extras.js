@@ -230,7 +230,7 @@
     if (!value || !sub) return;
     var fix = function (n) { return fa(Math.round(n * 10) / 10); };
     value.textContent = fix(petrol) + " لیتر";
-    sub.textContent = cng > 0 ? fix(cng) + " متر مکعب سی‌ان‌جی" : "بنزین این ماه · لمس کنید";
+    sub.textContent = cng > 0 ? fix(cng) + " متر مکعب سی‌ان‌جی" : "";
   }
   var priorRender = window.render;
   if (typeof priorRender === "function") {
