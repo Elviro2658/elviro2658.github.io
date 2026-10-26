@@ -1,17 +1,15 @@
-run: 2026-10-26T01:25:48Z
-applying 0007-index.patch
-applied 5 replacements in 1 files
-applying 0008-styles.patch
-applied 1 replacements in 1 files
-applying 0009-scripts.patch
-applied 10 replacements in 4 files
+run: 2026-10-26T06:26:10Z
+applying 0010-new-files.patch
+applied 0 replacements in 0 files
 icons written to icons
 files now present:
 README.md
 STATUS.txt
+car3d.js
 enhancements.js
 extras.js
 favicon.svg
+hero.js
 icons
 index.html
 main.js

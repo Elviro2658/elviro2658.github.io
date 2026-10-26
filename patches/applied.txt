@@ -7,3 +7,4 @@
 0007-index.patch
 0008-styles.patch
 0009-scripts.patch
+0010-new-files.patch
