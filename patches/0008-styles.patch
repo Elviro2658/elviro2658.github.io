@@ -1,0 +1,53 @@
+#FILE styles.css
+#REPLACE
+%;object-fit:cover}
+
+#WITH
+%;object-fit:cover}
+
+/* ===== v1.3: ظاهر مدرن؛ صحنهٔ خودرو، نوار چهارتایی، کارت‌های فشرده و نوار پیشرفت ===== */
+section.vehicle-hero{position:relative;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:2px;min-height:0!important;padding:6px 12px 16px!important;border-radius:30px!important;background:radial-gradient(120% 90% at 50% -12%,#3b1d8f 0%,#1a0f45 46%,#0a1222 100%)!important;color:#fff;overflow:hidden;box-shadow:0 24px 48px -28px #000,inset 0 0 0 1px rgba(255,255,255,.08)}
+section.vehicle-hero::before{content:"";position:absolute;inset:auto -20% -45% -20%;left:auto;top:auto;width:auto;height:75%;border:0;border-radius:0;background:radial-gradient(closest-side,rgba(53,224,255,.2),transparent);pointer-events:none}
+section.vehicle-hero .vehicle-art.car-stage{order:-1;position:relative!important;left:auto!important;bottom:auto!important;opacity:1!important;transform:none!important;pointer-events:auto!important;display:block!important;width:100%!important;max-width:520px;height:auto!important;flex:none!important;margin:0 auto!important;aspect-ratio:460/264}
+.car-stage canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none}
+.car-stage canvas:active{cursor:grabbing}
+.car-caption{position:absolute;inset-inline:0;top:8px;text-align:center;font-size:12px;font-weight:800;color:#d8ecff;text-shadow:0 0 10px rgba(53,224,255,.75);pointer-events:none}
+.car-hint{position:absolute;inset-inline:0;bottom:0;text-align:center;font-size:10px;color:rgba(255,255,255,.5);pointer-events:none}
+section.vehicle-hero .vehicle-copy{position:relative;z-index:2;max-width:100%!important;width:100%;text-align:center;display:flex;flex-direction:column;align-items:center}
+section.vehicle-hero .eyebrow{justify-content:center;font-size:10px;color:#bcd4f4}
+section.vehicle-hero .vehicle-copy h1{margin:6px 0 2px;font-size:22px;letter-spacing:0}
+section.vehicle-hero .vehicle-copy p{max-width:none;margin:0 0 10px;font-size:12px;line-height:1.7;color:#cbd7ee}
+.stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;margin-top:12px!important}
+.stat-card{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;min-height:0!important;padding:10px 4px 9px!important;border-radius:18px!important;text-align:center}
+.stat-card .stat-icon{width:34px!important;height:34px!important}
+.stat-card .stat-label{display:flex;align-items:center;justify-content:center;min-height:2.7em;font-size:10px!important;line-height:1.35}
+.stat-card strong,.stat-card .odometer-readout strong{font-size:13.5px!important;line-height:1.2}
+.stat-card .odometer-readout{padding:0;border:0;background:none;color:inherit}
+.stat-card small{font-size:9.5px!important;line-height:1.3}
+.stat-card small:empty,.odometer-stat-card>small,#due-count-card>small{display:none}
+
+.service-card{height:auto!important;min-height:0;grid-template-rows:auto auto auto auto!important;row-gap:5px!important;padding:12px 14px!important;border-radius:20px!important}
+.service-card .service-top{min-height:0}
+.service-card .service-title{font-size:15px!important}
+.service-card .service-date{font-size:10.5px!important;opacity:.8}
+.service-card .service-part{font-size:11.5px!important;line-height:18px!important;opacity:.85}
+.service-card .service-stats{display:flex!important;align-items:center;justify-content:space-between;gap:10px;font-size:12px}
+.service-card .service-footer{min-height:34px;align-items:flex-end}
+.service-card .service-due-text .due-part{font-size:11px!important;line-height:16px!important}
+.document-card{height:auto!important;min-height:0;grid-template-rows:56px 22px 22px auto!important;row-gap:4px!important;padding:12px 14px 22px!important;border-radius:20px!important}
+.document-card .document-card-top{height:56px}
+.document-card .document-actions{min-height:0}
+.due-card{position:relative;padding-bottom:20px!important}
+.service-card,.document-card{position:relative}
+.service-card.deadline-future,.service-card.deadline-near,.service-card.deadline-overdue{padding-bottom:12px!important}
+.deadline-progress{position:absolute;inset-inline:14px;bottom:8px;height:5px;border-radius:999px;background:rgba(120,150,145,.24);overflow:hidden}
+.deadline-progress i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#2fd08a,#35e0ff);box-shadow:0 0 8px rgba(53,224,255,.75);transition:width .4s ease}
+.deadline-progress[data-tone="warn"] i{background:linear-gradient(90deg,#ffb547,#ffd84d);box-shadow:0 0 8px rgba(255,181,71,.75)}
+.deadline-progress[data-tone="bad"] i{background:linear-gradient(90deg,#ff5a4f,#ff8a72);box-shadow:0 0 8px rgba(255,90,79,.75)}
+
+.car-color-field .car-swatches{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.car-swatch{width:34px;height:34px;padding:0;border-radius:50%;border:2px solid rgba(120,150,140,.5);background:var(--sw);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+.car-swatch[aria-checked="true"]{border-color:#7c3aed;box-shadow:0 0 0 3px rgba(124,58,237,.35),inset 0 0 0 2px rgba(255,255,255,.55)}
+.car-match-hint{display:block;margin-top:4px;font-size:11px;color:#6b8a82}
+
+#END

@@ -1,0 +1,40 @@
+#FILE index.html
+#REPLACE
+ref="/styles.css?v=50" />
+    <title>سروی
+#WITH
+ref="/styles.css?v=51" />
+    <title>سروی
+#END
+#REPLACE
+" aria-hidden="true"><img class="vehicle-hero-image" src="/icons/service-negar-car.svg" width="460" height="280" alt="" /
+#WITH
+ car-stage" role="img" aria-label="نمای سه‌بعدی خودرو؛ برای چرخاندن بکشید"><canvas id="car-canvas" width="460" height="264"></canvas><span class="car-caption" id="car-caption"></span><span class="car-hint" aria-hidden="true">↔ بکشید تا بچرخد</span
+#END
+#REPLACE
+er src="/main.js?v=32"></script>
+    <scr
+#WITH
+er src="/main.js?v=33"></script>
+    <scr
+#END
+#REPLACE
+/enhancements.js?v=34"></script>
+    <scr
+#WITH
+/enhancements.js?v=35"></script>
+    <scr
+#END
+#REPLACE
+r src="/extras.js?v=1"></script>
+  </body>
+</html>
+
+#WITH
+r src="/extras.js?v=2"></script>
+    <script defer src="/car3d.js?v=1"></script>
+    <script defer src="/hero.js?v=1"></script>
+  </body>
+</html>
+
+#END

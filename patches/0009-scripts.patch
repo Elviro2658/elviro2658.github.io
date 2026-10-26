@@ -1,0 +1,56 @@
+#FILE main.js
+#REPLACE
+rdMeta+'</div></div></article>',dock=com
+#WITH
+rdMeta+'</div></div>'+(window.entryBar?window.entryBar(entry):"")+'</article>',dock=com
+#END
+#FILE enhancements.js
+#REPLACE
+Number(v.odometer,0)};b.entries=Array.is
+#WITH
+Number(v.odometer,0),color:cleanText(v.color,9),carKey:cleanText(v.carKey,40)};b.entries=Array.is
+#END
+#REPLACE
+/div>'+photoActions+'</article>',dock=re
+#WITH
+/div>'+photoActions+(window.docBar?window.docBar(d):"")+'</article>',dock=re
+#END
+#REPLACE
+ class="service-meta"><span>کارکرد: <str
+#WITH
+ class="service-meta service-stats" title="'+escapeHtml(cost)+'"><span>کارکرد: <str
+#END
+#REPLACE
+</span></div><div class="service-meta cost-breakdown"><span>'+escapeHtml(cost)+'
+#WITH
+
+#END
+#REPLACE
+eter:Math.floor(odo)};if(!saveState())re
+#WITH
+eter:Math.floor(odo),color:(state.vehicle&&state.vehicle.color)||"",carKey:(state.vehicle&&state.vehicle.carKey)||""};if(!saveState())re
+#END
+#FILE extras.js
+#REPLACE
+بنزین این ماه · لمس کنید
+#WITH
+
+#END
+#FILE sw.js
+#REPLACE
+iro-service-negar-v52";
+const CORE_ASSETS
+#WITH
+iro-service-negar-v53";
+const CORE_ASSETS
+#END
+#REPLACE
+0", "/main.js?v=32
+#WITH
+1", "/main.js?v=33
+#END
+#REPLACE
+4", "/service-picker.js?v=1", "/extras
+#WITH
+5", "/service-picker.js?v=1", "/extras.js?v=2", "/car3d.js?v=1", "/hero
+#END
