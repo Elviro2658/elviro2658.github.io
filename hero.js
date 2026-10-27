@@ -15,7 +15,7 @@
       var start = d.kind === "insurance" ? (d.startDate || d.paymentDate) : d.inspectionDate, left = daysUntil(d.expiryDate);
       if (left === null) return "";
       var total = start ? spanDays(start, d.expiryDate) : 365, fraction = left < 0 ? 0 : Math.min(1, left / total);
-      return bar(fraction, toneFor(left, fraction));
+      return bar(1 - fraction, toneFor(left, fraction));
     } catch (error) { return ""; }
   };
   window.entryBar = function (entry) {
@@ -26,7 +26,7 @@
       if (due.daysLeft !== null) fractions.push(due.daysLeft < 0 ? 0 : due.daysLeft / spanDays(entry.date, entry.nextDate));
       if (due.kmLeft !== null && entry.nextKm !== null) fractions.push(due.kmLeft < 0 ? 0 : due.kmLeft / Math.max(1, entry.nextKm - entry.km));
       var fraction = Math.min.apply(null, fractions);
-      return bar(fraction, due.overdue || due.today ? "bad" : due.soon ? "warn" : "ok");
+      return bar(1 - fraction, due.overdue || due.today ? "bad" : due.soon ? "warn" : "ok");
     } catch (error) { return ""; }
   };
 
@@ -58,11 +58,30 @@
     var entry = Cars.byKey(v.carKey) || Cars.find(v.model) || Cars.find(v.label) || Cars.generic((v.model || "") + " " + (v.label || ""));
     return { entry: entry, color: /^#[0-9a-f]{3,8}$/i.test(v.color || "") ? v.color : "#f2f2f2", label: v.label || "" };
   }
+  var BODY = { sedan: "سدان", hatch: "هاچ‌بک", cross: "کراس‌اوور", suv: "شاسی‌بلند", pickup: "وانت", van: "ون" };
+  function renderSpecs(c) {
+    var holder = $("#car-specs");
+    if (!holder) {
+      var stage = $(".car-stage");
+      if (!stage) return;
+      holder = document.createElement("div");
+      holder.id = "car-specs"; holder.className = "car-specs";
+      stage.parentNode.insertBefore(holder, stage.nextSibling);
+    }
+    var v = (typeof state !== "undefined" && state.vehicle) || {}, e = c.entry, generic = e.key.indexOf("generic-") === 0, chips = [];
+    var fa = function (n) { return toPersianDigits(String(n).replace(".", "٫")); };
+    chips.push(["بدنه", BODY[e.type] || "سدان"]);
+    if (!generic) chips.push(["ابعاد", fa(e.L.toFixed(2)) + " × " + fa(e.W.toFixed(2)) + " × " + fa(e.H.toFixed(2)) + " متر"]);
+    if (v.year) chips.push(["سال", toPersianDigits(String(v.year))]);
+    if (v.plate) chips.push(["پلاک", String(v.plate)]);
+    holder.innerHTML = chips.map(function (x) { return '<span class="car-spec"><small>' + x[0] + '</small><b>' + x[1] + '</b></span>'; }).join("");
+  }
   function sync() {
     var c = current(), sig = c.entry.key + "|" + c.color;
     if (sig !== signature) { signature = sig; model = Cars.make(c.entry, c.color); }
     var cap = $("#car-caption");
     if (cap) cap.textContent = c.entry.key.indexOf("generic-") === 0 ? "" : c.entry.fa;
+    renderSpecs(c);
     resize(); paint(); kick();
   }
 

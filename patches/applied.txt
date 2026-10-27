@@ -8,3 +8,6 @@
 0008-styles.patch
 0009-scripts.patch
 0010-new-files.patch
+0011-index-sw.patch
+0012-styles.patch
+0014-hero.patch
