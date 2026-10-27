@@ -1,0 +1,633 @@
+#FILE car3d.js
+#REPLACE
+h", 3.83, 1.58, 1.39],
+    ["pride-131",
+#WITH
+h", 3.83, 1.58, 1.39, "boxy"],
+    ["pride-131",
+#END
+#REPLACE
+an", 4.0, 1.58, 1.39],
+    ["pride-141",
+#WITH
+an", 4.0, 1.58, 1.39, "boxy"],
+    ["pride-141",
+#END
+#REPLACE
+an", 3.95, 1.58, 1.4],
+    ["tiba", "تیب
+#WITH
+an", 3.95, 1.58, 1.4, "boxy"],
+    ["tiba", "تیب
+#END
+#REPLACE
+an", 4.05, 1.6, 1.47],
+    ["tiba2", "تی
+#WITH
+an", 4.05, 1.6, 1.47, "boxy"],
+    ["tiba2", "تی
+#END
+#REPLACE
+dan", 4.2, 1.64, 1.5],
+    ["quick", "کو
+#WITH
+dan", 4.2, 1.64, 1.5, "boxy"],
+    ["quick", "کو
+#END
+#REPLACE
+an", 4.5, 1.77, 1.47],
+    ["atlas", "اط
+#WITH
+an", 4.5, 1.77, 1.47, "fast"],
+    ["atlas", "اط
+#END
+#REPLACE
+tch", 4.0, 1.7, 1.52],
+    ["saipa-151",
+#WITH
+tch", 4.0, 1.7, 1.52, "boxy"],
+    ["saipa-151",
+#END
+#REPLACE
+an", 4.4, 1.64, 1.42],
+    ["paykan-pick
+#WITH
+an", 4.4, 1.64, 1.42, "boxy"],
+    ["paykan-pick
+#END
+#REPLACE
+n", 4.43, 1.71, 1.42],
+    ["peugeot-par
+#WITH
+n", 4.43, 1.71, 1.42, "boxy"],
+    ["peugeot-par
+#END
+#REPLACE
+an", 4.5, 1.77, 1.47],
+    ["peugeot-206
+#WITH
+an", 4.5, 1.77, 1.47, "boxy"],
+    ["peugeot-206
+#END
+#REPLACE
+an", 4.79, 1.83, 1.4],
+    ["peugeot-200
+#WITH
+an", 4.79, 1.83, 1.4, "fast"],
+    ["peugeot-200
+#END
+#REPLACE
+s", 4.45, 1.84, 1.62],
+    ["samand", "س
+#WITH
+s", 4.45, 1.84, 1.62, "fast"],
+    ["samand", "س
+#END
+#REPLACE
+an", 4.5, 1.73, 1.47],
+    ["soren", "سم
+#WITH
+an", 4.5, 1.73, 1.47, "boxy"],
+    ["soren", "سم
+#END
+#REPLACE
+n", 4.51, 1.73, 1.47],
+    ["runna", "را
+#WITH
+n", 4.51, 1.73, 1.47, "boxy"],
+    ["runna", "را
+#END
+#REPLACE
+n", 4.42, 1.71, 1.47],
+    ["dena", "دنا
+#WITH
+n", 4.42, 1.71, 1.47, "boxy"],
+    ["dena", "دنا
+#END
+#REPLACE
+an", 4.55, 1.76, 1.5],
+    ["tara", "تار
+#WITH
+an", 4.55, 1.76, 1.5, "fast"],
+    ["tara", "تار
+#END
+#REPLACE
+dan", 4.5, 1.78, 1.5],
+    ["arisun", "آ
+#WITH
+dan", 4.5, 1.78, 1.5, "fast"],
+    ["arisun", "آ
+#END
+#REPLACE
+dan", 4.3, 1.7, 1.45],
+    ["mvm-x22", "
+#WITH
+dan", 4.3, 1.7, 1.45, "boxy"],
+    ["mvm-x22", "
+#END
+#REPLACE
+oss", 4.4, 1.8, 1.62],
+    ["mvm-550", "
+#WITH
+oss", 4.4, 1.8, 1.62, "fast"],
+    ["mvm-550", "
+#END
+#REPLACE
+n", 4.65, 1.81, 1.46],
+    ["arrizo-5", 
+#WITH
+n", 4.65, 1.81, 1.46, "fast"],
+    ["arrizo-5", 
+#END
+#REPLACE
+an", 4.57, 1.8, 1.48],
+    ["tiggo-5", "
+#WITH
+an", 4.57, 1.8, 1.48, "fast"],
+    ["tiggo-5", "
+#END
+#REPLACE
+oss", 4.5, 1.84, 1.7],
+    ["tiggo-8", "
+#WITH
+oss", 4.5, 1.84, 1.7, "fast"],
+    ["tiggo-8", "
+#END
+#REPLACE
+dan", 4.45, 1.7, 1.5],
+    ["jac-j5", "ج
+#WITH
+dan", 4.45, 1.7, 1.5, "boxy"],
+    ["jac-j5", "ج
+#END
+#REPLACE
+edan", 4.6, 1.8, 1.5],
+    ["jac-s3", "ج
+#WITH
+edan", 4.6, 1.8, 1.5, "fast"],
+    ["jac-s3", "ج
+#END
+#REPLACE
+an", 4.76, 1.79, 1.5],
+    ["lifan-620",
+#WITH
+an", 4.76, 1.79, 1.5, "fast"],
+    ["lifan-620",
+#END
+#REPLACE
+an", 4.47, 1.7, 1.48],
+    ["lifan-x60",
+#WITH
+an", 4.47, 1.7, 1.48, "boxy"],
+    ["lifan-x60",
+#END
+#REPLACE
+rilliance H320", "sedan", 4.65, 1.8, 1.5],
+    ["brilliance-h330", "برلیانس H330
+#WITH
+rilliance H320", "sedan", 4.65, 1.8, 1.5, "fast"],
+    ["brilliance-h330", "برلیانس H330
+#END
+#REPLACE
+rilliance H330", "sedan", 4.65, 1.8, 1.5],
+    ["brilliance-h220", "برلیانس H220
+#WITH
+rilliance H330", "sedan", 4.65, 1.8, 1.5, "fast"],
+    ["brilliance-h220", "برلیانس H220
+#END
+#REPLACE
+dan", 4.45, 1.7, 1.5],
+    ["dongfeng-h3
+#WITH
+dan", 4.45, 1.7, 1.5, "boxy"],
+    ["dongfeng-h3
+#END
+#REPLACE
+an", 4.63, 1.79, 1.5],
+    ["geely-gc6",
+#WITH
+an", 4.63, 1.79, 1.5, "fast"],
+    ["geely-gc6",
+#END
+#REPLACE
+s", 4.46, 1.88, 1.62],
+    ["mg-zs", "ام
+#WITH
+s", 4.46, 1.88, 1.62, "fast"],
+    ["mg-zs", "ام
+#END
+#REPLACE
+an", 4.54, 1.81, 1.5],
+    ["mg-6", "ام‌
+#WITH
+an", 4.54, 1.81, 1.5, "fast"],
+    ["mg-6", "ام‌
+#END
+#REPLACE
+s", 4.57, 1.87, 1.67],
+    ["haval-h2", 
+#WITH
+s", 4.57, 1.87, 1.67, "fast"],
+    ["haval-h2", 
+#END
+#REPLACE
+s", 4.47, 1.84, 1.69],
+    ["changan-cs3
+#WITH
+s", 4.47, 1.84, 1.69, "fast"],
+    ["changan-cs3
+#END
+#REPLACE
+ss", 4.5, 1.85, 1.69],
+    ["changan-hun
+#WITH
+ss", 4.5, 1.85, 1.69, "fast"],
+    ["changan-hun
+#END
+#REPLACE
+uv", 4.65, 1.9, 1.74],
+    ["hyundai-acc
+#WITH
+uv", 4.65, 1.9, 1.74, "boxy"],
+    ["hyundai-acc
+#END
+#REPLACE
+an", 4.37, 1.7, 1.47],
+    ["hyundai-ela
+#WITH
+an", 4.37, 1.7, 1.47, "boxy"],
+    ["hyundai-ela
+#END
+#REPLACE
+an", 4.62, 1.8, 1.45],
+    ["hyundai-son
+#WITH
+an", 4.62, 1.8, 1.45, "fast"],
+    ["hyundai-son
+#END
+#REPLACE
+an", 4.9, 1.86, 1.45],
+    ["hyundai-i20
+#WITH
+an", 4.9, 1.86, 1.45, "fast"],
+    ["hyundai-i20
+#END
+#REPLACE
+ss", 4.5, 1.86, 1.65],
+    ["hyundai-san
+#WITH
+ss", 4.5, 1.86, 1.65, "fast"],
+    ["hyundai-san
+#END
+#REPLACE
+an", 4.37, 1.7, 1.47],
+    ["kia-pegas",
+#WITH
+an", 4.37, 1.7, 1.47, "boxy"],
+    ["kia-pegas",
+#END
+#REPLACE
+dan", 4.4, 1.7, 1.46],
+    ["kia-cerato"
+#WITH
+dan", 4.4, 1.7, 1.46, "boxy"],
+    ["kia-cerato"
+#END
+#REPLACE
+dan", 4.6, 1.8, 1.44],
+    ["kia-optima"
+#WITH
+dan", 4.6, 1.8, 1.44, "fast"],
+    ["kia-optima"
+#END
+#REPLACE
+n", 4.85, 1.86, 1.47],
+    ["kia-picanto
+#WITH
+n", 4.85, 1.86, 1.47, "fast"],
+    ["kia-picanto
+#END
+#REPLACE
+s", 4.48, 1.85, 1.65],
+    ["kia-sorento
+#WITH
+s", 4.48, 1.85, 1.65, "fast"],
+    ["kia-sorento
+#END
+#REPLACE
+n", 4.63, 1.78, 1.45],
+    ["toyota-camr
+#WITH
+n", 4.63, 1.78, 1.45, "fast"],
+    ["toyota-camr
+#END
+#REPLACE
+n", 4.88, 1.84, 1.44],
+    ["toyota-yari
+#WITH
+n", 4.88, 1.84, 1.44, "fast"],
+    ["toyota-yari
+#END
+#REPLACE
+v", 4.78, 1.89, 1.85],
+    ["toyota-land
+#WITH
+v", 4.78, 1.89, 1.85, "boxy"],
+    ["toyota-land
+#END
+#REPLACE
+v", 4.95, 1.98, 1.89],
+    ["toyota-hilu
+#WITH
+v", 4.95, 1.98, 1.89, "boxy"],
+    ["toyota-hilu
+#END
+#REPLACE
+dan", 4.6, 1.8, 1.45],
+    ["mazda-6", "
+#WITH
+dan", 4.6, 1.8, 1.45, "fast"],
+    ["mazda-6", "
+#END
+#REPLACE
+n", 4.87, 1.84, 1.45],
+    ["mazda-cx5",
+#WITH
+n", 4.87, 1.84, 1.45, "fast"],
+    ["mazda-cx5",
+#END
+#REPLACE
+v", 5.07, 1.97, 1.73],
+    ["nissan-sunn
+#WITH
+v", 5.07, 1.97, 1.73, "boxy"],
+    ["nissan-sunn
+#END
+#REPLACE
+edan", 4.5, 1.7, 1.5],
+    ["nissan-tiid
+#WITH
+edan", 4.5, 1.7, 1.5, "boxy"],
+    ["nissan-tiid
+#END
+#REPLACE
+oss", 4.4, 1.81, 1.6],
+    ["nissan-xtra
+#WITH
+oss", 4.4, 1.81, 1.6, "fast"],
+    ["nissan-xtra
+#END
+#REPLACE
+uv", 5.1, 1.98, 1.94],
+    ["nissan-nava
+#WITH
+uv", 5.1, 1.98, 1.94, "boxy"],
+    ["nissan-nava
+#END
+#REPLACE
+an", 4.65, 1.8, 1.42],
+    ["honda-accor
+#WITH
+an", 4.65, 1.8, 1.42, "fast"],
+    ["honda-accor
+#END
+#REPLACE
+an", 4.9, 1.86, 1.45],
+    ["honda-crv",
+#WITH
+an", 4.9, 1.86, 1.45, "fast"],
+    ["honda-crv",
+#END
+#REPLACE
+n", 4.57, 1.76, 1.49],
+    ["mitsubishi-
+#WITH
+n", 4.57, 1.76, 1.49, "boxy"],
+    ["mitsubishi-
+#END
+#REPLACE
+uv", 4.9, 1.87, 1.88],
+    ["suzuki-vita
+#WITH
+uv", 4.9, 1.87, 1.88, "boxy"],
+    ["suzuki-vita
+#END
+#REPLACE
+uv", 3.65, 1.65, 1.7],
+    ["renault-log
+#WITH
+uv", 3.65, 1.65, 1.7, "boxy"],
+    ["renault-log
+#END
+#REPLACE
+n", 4.25, 1.74, 1.52],
+    ["renault-san
+#WITH
+n", 4.25, 1.74, 1.52, "boxy"],
+    ["renault-san
+#END
+#REPLACE
+an", 4.6, 1.79, 1.48],
+    ["chevrolet-o
+#WITH
+an", 4.6, 1.79, 1.48, "fast"],
+    ["chevrolet-o
+#END
+#REPLACE
+an", 4.5, 1.72, 1.45],
+    ["chevrolet-c
+#WITH
+an", 4.5, 1.72, 1.45, "boxy"],
+    ["chevrolet-c
+#END
+#REPLACE
+n", 4.77, 1.83, 1.46],
+    ["vw-tiguan",
+#WITH
+n", 4.77, 1.83, 1.46, "fast"],
+    ["vw-tiguan",
+#END
+#REPLACE
+n", 4.87, 1.85, 1.48],
+    ["ford-explor
+#WITH
+n", 4.87, 1.85, 1.48, "fast"],
+    ["ford-explor
+#END
+#REPLACE
+uv", 5.04, 2.0, 1.78],
+    ["bmw-3", "بی
+#WITH
+uv", 5.04, 2.0, 1.78, "boxy"],
+    ["bmw-3", "بی
+#END
+#REPLACE
+n", 4.71, 1.83, 1.44],
+    ["bmw-5", "بی
+#WITH
+n", 4.71, 1.83, 1.44, "fast"],
+    ["bmw-5", "بی
+#END
+#REPLACE
+n", 4.96, 1.87, 1.47],
+    ["bmw-x3", "ب
+#WITH
+n", 4.96, 1.87, 1.47, "fast"],
+    ["bmw-x3", "ب
+#END
+#REPLACE
+s", 4.71, 1.89, 1.68],
+    ["bmw-x5", "ب
+#WITH
+s", 4.71, 1.89, 1.68, "fast"],
+    ["bmw-x5", "ب
+#END
+#REPLACE
+n", 4.69, 1.81, 1.44],
+    ["benz-e", "ب
+#WITH
+n", 4.69, 1.81, 1.44, "fast"],
+    ["benz-e", "ب
+#END
+#REPLACE
+n", 4.95, 1.85, 1.46],
+    ["benz-glc", 
+#WITH
+n", 4.95, 1.85, 1.46, "fast"],
+    ["benz-glc", 
+#END
+#REPLACE
+s", 4.66, 1.89, 1.64],
+    ["audi-a4", "
+#WITH
+s", 4.66, 1.89, 1.64, "fast"],
+    ["audi-a4", "
+#END
+#REPLACE
+n", 4.76, 1.84, 1.43],
+    ["audi-a6", "
+#WITH
+n", 4.76, 1.84, 1.43, "fast"],
+    ["audi-a6", "
+#END
+#REPLACE
+n", 4.94, 1.89, 1.46],
+    ["audi-q5", "
+#WITH
+n", 4.94, 1.89, 1.46, "fast"],
+    ["audi-q5", "
+#END
+#REPLACE
+s", 4.68, 1.89, 1.66],
+    ["lexus-rx", 
+#WITH
+s", 4.68, 1.89, 1.66, "fast"],
+    ["lexus-rx", 
+#END
+#REPLACE
+s", 4.89, 1.92, 1.69],
+    ["jeep-cherok
+#WITH
+s", 4.89, 1.92, 1.69, "fast"],
+    ["jeep-cherok
+#END
+#REPLACE
+v", 4.62, 1.86, 1.69],
+    ["tesla-3", "
+#WITH
+v", 4.62, 1.86, 1.69, "boxy"],
+    ["tesla-3", "
+#END
+#REPLACE
+n", 4.69, 1.85, 1.44],
+    ["volvo-xc60"
+#WITH
+n", 4.69, 1.85, 1.44, "fast"],
+    ["volvo-xc60"
+#END
+#REPLACE
+], W: c[5], H: c[6],
+      tokens: [norm
+#WITH
+], W: c[5], H: c[6], style: c[7] || "",
+      tokens: [norm
+#END
+#REPLACE
+.9], gc: 0.2 }
+  };
+  function buildProf
+#WITH
+.9], gc: 0.2 }
+  };
+  var STY = {
+    "sedan:fast": { house: [0.15, 0.41, 0.6, 0.72], tail: 0.55, nose: 0.48 },
+    "sedan:boxy": { house: [0.22, 0.28, 0.58, 0.67], nose: 0.54, tail: 0.6 },
+    "hatch:boxy": { house: [0.03, 0.08, 0.6, 0.7], nose: 0.54 },
+    "cross:fast": { house: [0.09, 0.27, 0.58, 0.73], tail: 0.58 },
+    "suv:boxy": { house: [0.02, 0.04, 0.66, 0.76], nose: 0.6, hood: 0.64 }
+  };
+  function buildProf
+#END
+#REPLACE
+ = T[spec.type] || T.sedan
+#WITH
+0 = T[spec.type] || T.sedan, st = STY[spec.type + ":" + spec.style], t = st ? Object.assign({}, t0, st) : t0
+#END
+#REPLACE
+ * Math.sin(b)]); }
+    faces.push({ v: 
+#WITH
+ * Math.sin(b)]); }
+    for (i = 0; i < 5; i++) {
+      var sa = 2 * Math.PI * i / 5 + 0.3, ca = Math.cos(sa), sn = Math.sin(sa), hw = r * 0.07, r0 = r * 0.2, r1 = r * 0.88;
+      [1, -1].forEach(function (side) {
+        var zz = cz + side * (w / 2 + 0.005), q = [[r0, -hw], [r1, -hw * 0.7], [r1, hw * 0.7], [r0, hw]].map(function (u) { return [cx + u[0] * ca - u[1] * sn, cy + u[0] * sn + u[1] * ca, zz]; });
+        faces.push({ v: side > 0 ? q : q.slice().reverse(), n: [0, 0, side], spoke: true });
+      });
+    }
+    faces.push({ v: 
+#END
+#REPLACE
+ { paint: true }));
+    if (spec.type ==
+#WITH
+ { paint: true }));
+    // سپر پایین، پلاک، رکاب و خط درها
+    var trim = "#25282d", gc = p.gc;
+    out.post.push(box(L / 2 - 0.02, gc + 0.14, 0, 0.06, 0.15, W * 0.94, trim, { front: true }));
+    out.post.push(box(-L / 2 + 0.02, gc + 0.14, 0, 0.06, 0.15, W * 0.94, trim, {}));
+    out.post.push(box(L / 2 + 0.012, gc + 0.22, 0, 0.012, 0.115, 0.34, "#eeeeea", { plate: true, front: true }));
+    out.post.push(box(-L / 2 - 0.012, gc + 0.3, 0, 0.012, 0.115, 0.34, "#eeeeea", { plate: true }));
+    out.post.push(box(L / 2 - 0.005, gc + 0.3, 0, 0.05, 0.05, W * 0.5, "#16181b", { front: true }));
+    var doorA = p.hx[3] - cx - 0.02, doorC = p.hx[0] - cx + 0.03, doorB = (doorA + doorC) / 2, seamY0 = gc + 0.3, seamH = p.belt - seamY0 + 0.02;
+    [-1, 1].forEach(function (sd) {
+      var zz = sd * (W / 2 + 0.004);
+      out.post.push(box(doorB, seamY0 + seamH / 2, zz, 0.012, seamH, 0.008, "#0e1013", {}));
+      var archTop = p.r * 2 + 0.12, shortH = p.belt - archTop + 0.02;
+      if (shortH > 0.08) [doorA, doorC].forEach(function (x) { out.post.push(box(x, archTop + shortH / 2, zz, 0.012, shortH, 0.008, "#0e1013", {})); });
+      [doorB + 0.34, doorC + 0.34].forEach(function (x) { if (x < doorA - 0.15) out.post.push(box(x, p.belt - 0.08, zz, 0.15, 0.026, 0.014, "#cfd6dc", { chrome: true })); });
+      out.post.push(box((p.wheels[0] + p.wheels[1]) / 2 - cx, gc + 0.07, zz, Math.max(0.4, (p.wheels[1] - p.wheels[0]) - p.r * 2.2), 0.05, 0.008, "#16181b", {}));
+    });
+    if (spec.type === "suv" || spec.type === "cross" || spec.type === "van") {
+      [-1, 1].forEach(function (sd) { out.post.push(box((p.hx[1] + p.hx[2]) / 2 - cx, H + 0.025, sd * W * 0.33, Math.max(0.5, p.hx[2] - p.hx[1] - 0.15), 0.035, 0.04, "#1a1c1f", {})); });
+    }
+    if (spec.type === "sedan" && spec.style === "fast") {
+      out.post.push(box(-L / 2 + 0.1, p.tailY + 0.01, 0, 0.14, 0.03, W * 0.78, color, { paint: true }));
+    }
+    if (spec.type ==
+#END
+#REPLACE
+.7 + 0.6 * it.lit);
+      else if (it.fa
+#WITH
+.7 + 0.6 * it.lit);
+      else if (it.face.spoke) color = shade(hexToRgb(o.rim), 0.78 + 0.5 * it.lit);
+      else if (it.fa
+#END
+#REPLACE
+ entry.W, H: entry.H };
+    var m = buil
+#WITH
+ entry.W, H: entry.H, style: entry.style };
+    var m = buil
+#END
