@@ -1,0 +1,52 @@
+#FILE hero.js
+#REPLACE
+);
+      return bar(fraction, toneFor(le
+#WITH
+);
+      return bar(1 - fraction, toneFor(le
+#END
+#REPLACE
+);
+      return bar(fraction, due.overdu
+#WITH
+);
+      return bar(1 - fraction, due.overdu
+#END
+#REPLACE
+.label || "" };
+  }
+  function sync() {
+
+#WITH
+.label || "" };
+  }
+  var BODY = { sedan: "سدان", hatch: "هاچ‌بک", cross: "کراس‌اوور", suv: "شاسی‌بلند", pickup: "وانت", van: "ون" };
+  function renderSpecs(c) {
+    var holder = $("#car-specs");
+    if (!holder) {
+      var stage = $(".car-stage");
+      if (!stage) return;
+      holder = document.createElement("div");
+      holder.id = "car-specs"; holder.className = "car-specs";
+      stage.parentNode.insertBefore(holder, stage.nextSibling);
+    }
+    var v = (typeof state !== "undefined" && state.vehicle) || {}, e = c.entry, generic = e.key.indexOf("generic-") === 0, chips = [];
+    var fa = function (n) { return toPersianDigits(String(n).replace(".", "٫")); };
+    chips.push(["بدنه", BODY[e.type] || "سدان"]);
+    if (!generic) chips.push(["ابعاد", fa(e.L.toFixed(2)) + " × " + fa(e.W.toFixed(2)) + " × " + fa(e.H.toFixed(2)) + " متر"]);
+    if (v.year) chips.push(["سال", toPersianDigits(String(v.year))]);
+    if (v.plate) chips.push(["پلاک", String(v.plate)]);
+    holder.innerHTML = chips.map(function (x) { return '<span class="car-spec"><small>' + x[0] + '</small><b>' + x[1] + '</b></span>'; }).join("");
+  }
+  function sync() {
+
+#END
+#REPLACE
+ ? "" : c.entry.fa;
+    resize(); paint(
+#WITH
+ ? "" : c.entry.fa;
+    renderSpecs(c);
+    resize(); paint(
+#END

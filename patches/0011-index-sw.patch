@@ -1,0 +1,40 @@
+#FILE index.html
+#REPLACE
+ref="/styles.css?v=51" />
+    <title>سروی
+#WITH
+ref="/styles.css?v=52" />
+    <title>سروی
+#END
+#REPLACE
+er src="/car3d.js?v=1"></script>
+    <scr
+#WITH
+er src="/car3d.js?v=2"></script>
+    <scr
+#END
+#REPLACE
+fer src="/hero.js?v=1"></script>
+  </body
+#WITH
+fer src="/hero.js?v=2"></script>
+  </body
+#END
+#FILE sw.js
+#REPLACE
+iro-service-negar-v53";
+const CORE_ASSETS
+#WITH
+iro-service-negar-v54";
+const CORE_ASSETS
+#END
+#REPLACE
+l", "/styles.css?v=51", "/main.js?v=33", 
+#WITH
+l", "/styles.css?v=52", "/main.js?v=33", 
+#END
+#REPLACE
+1", "/hero.js?v=1
+#WITH
+2", "/hero.js?v=2
+#END
