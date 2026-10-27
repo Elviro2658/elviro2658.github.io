@@ -1,10 +1,6 @@
-run: 2026-10-27T20:58:54Z
-applying 0011-index-sw.patch
-applied 6 replacements in 2 files
-applying 0012-styles.patch
-applied 1 replacements in 1 files
-applying 0014-hero.patch
-applied 4 replacements in 1 files
+run: 2026-10-27T20:59:43Z
+applying 0013-car3d.patch
+applied 85 replacements in 1 files
 icons written to icons
 files now present:
 README.md

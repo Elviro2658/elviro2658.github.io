@@ -3,149 +3,149 @@
   "use strict";
   /* ---------- فهرست خودروها: [کلید، نام فارسی، نام انگلیسی، نوع بدنه، طول، عرض، ارتفاع (متر)] ---------- */
   var CARS = [
-    ["pride-111", "پراید ۱۱۱", "Saipa Pride 111", "hatch", 3.83, 1.58, 1.39],
-    ["pride-131", "پراید ۱۳۱", "Saipa Pride 131", "sedan", 4.0, 1.58, 1.39],
-    ["pride-141", "پراید ۱۴۱", "Saipa Pride 141", "sedan", 3.95, 1.58, 1.4],
-    ["tiba", "تیبا", "Saipa Tiba", "sedan", 4.05, 1.6, 1.47],
+    ["pride-111", "پراید ۱۱۱", "Saipa Pride 111", "hatch", 3.83, 1.58, 1.39, "boxy"],
+    ["pride-131", "پراید ۱۳۱", "Saipa Pride 131", "sedan", 4.0, 1.58, 1.39, "boxy"],
+    ["pride-141", "پراید ۱۴۱", "Saipa Pride 141", "sedan", 3.95, 1.58, 1.4, "boxy"],
+    ["tiba", "تیبا", "Saipa Tiba", "sedan", 4.05, 1.6, 1.47, "boxy"],
     ["tiba2", "تیبا ۲", "Saipa Tiba 2", "hatch", 3.9, 1.6, 1.5],
-    ["saina", "ساینا", "Saipa Saina", "sedan", 4.2, 1.64, 1.5],
+    ["saina", "ساینا", "Saipa Saina", "sedan", 4.2, 1.64, 1.5, "boxy"],
     ["quick", "کوییک", "Saipa Quick", "hatch", 3.74, 1.65, 1.52],
-    ["shahin", "شاهین", "Saipa Shahin", "sedan", 4.5, 1.77, 1.47],
-    ["atlas", "اطلس", "Saipa Atlas", "hatch", 4.0, 1.7, 1.52],
+    ["shahin", "شاهین", "Saipa Shahin", "sedan", 4.5, 1.77, 1.47, "fast"],
+    ["atlas", "اطلس", "Saipa Atlas", "hatch", 4.0, 1.7, 1.52, "boxy"],
     ["saipa-151", "سایپا ۱۵۱", "Saipa 151", "pickup", 4.3, 1.6, 1.5],
-    ["paykan", "پیکان", "Iran Khodro Paykan", "sedan", 4.4, 1.64, 1.42],
+    ["paykan", "پیکان", "Iran Khodro Paykan", "sedan", 4.4, 1.64, 1.42, "boxy"],
     ["paykan-pickup", "پیکان وانت", "Paykan Pickup", "pickup", 4.4, 1.64, 1.45],
-    ["peugeot-405", "پژو ۴۰۵", "Peugeot 405", "sedan", 4.43, 1.71, 1.42],
-    ["peugeot-pars", "پژو پارس", "Peugeot Pars", "sedan", 4.5, 1.77, 1.47],
+    ["peugeot-405", "پژو ۴۰۵", "Peugeot 405", "sedan", 4.43, 1.71, 1.42, "boxy"],
+    ["peugeot-pars", "پژو پارس", "Peugeot Pars", "sedan", 4.5, 1.77, 1.47, "boxy"],
     ["peugeot-206", "پژو ۲۰۶", "Peugeot 206", "hatch", 3.95, 1.65, 1.43],
     ["peugeot-206sd", "پژو ۲۰۶ صندوقدار", "Peugeot 206 SD", "sedan", 4.28, 1.65, 1.43],
     ["peugeot-207", "پژو ۲۰۷", "Peugeot 207", "hatch", 4.15, 1.72, 1.52],
     ["peugeot-207sd", "پژو ۲۰۷ صندوقدار", "Peugeot 207 SD", "sedan", 4.45, 1.72, 1.5],
     ["peugeot-301", "پژو ۳۰۱", "Peugeot 301", "sedan", 4.44, 1.75, 1.47],
-    ["peugeot-508", "پژو ۵۰۸", "Peugeot 508", "sedan", 4.79, 1.83, 1.4],
+    ["peugeot-508", "پژو ۵۰۸", "Peugeot 508", "sedan", 4.79, 1.83, 1.4, "fast"],
     ["peugeot-2008", "پژو ۲۰۰۸", "Peugeot 2008", "cross", 4.16, 1.74, 1.56],
-    ["peugeot-3008", "پژو ۳۰۰۸", "Peugeot 3008", "cross", 4.45, 1.84, 1.62],
-    ["samand", "سمند", "Iran Khodro Samand", "sedan", 4.5, 1.73, 1.47],
-    ["soren", "سمند سورن", "Samand Soren", "sedan", 4.51, 1.73, 1.47],
-    ["runna", "رانا", "Iran Khodro Runna", "sedan", 4.42, 1.71, 1.47],
-    ["dena", "دنا", "Iran Khodro Dena", "sedan", 4.55, 1.76, 1.5],
-    ["tara", "تارا", "Iran Khodro Tara", "sedan", 4.5, 1.78, 1.5],
+    ["peugeot-3008", "پژو ۳۰۰۸", "Peugeot 3008", "cross", 4.45, 1.84, 1.62, "fast"],
+    ["samand", "سمند", "Iran Khodro Samand", "sedan", 4.5, 1.73, 1.47, "boxy"],
+    ["soren", "سمند سورن", "Samand Soren", "sedan", 4.51, 1.73, 1.47, "boxy"],
+    ["runna", "رانا", "Iran Khodro Runna", "sedan", 4.42, 1.71, 1.47, "boxy"],
+    ["dena", "دنا", "Iran Khodro Dena", "sedan", 4.55, 1.76, 1.5, "fast"],
+    ["tara", "تارا", "Iran Khodro Tara", "sedan", 4.5, 1.78, 1.5, "fast"],
     ["arisun", "آریسان", "Iran Khodro Arisun", "pickup", 4.6, 1.7, 1.7],
     ["haima-s7", "هایما S7", "Haima S7", "cross", 4.6, 1.85, 1.7],
     ["mvm-315", "ام‌وی‌ام ۳۱۵", "MVM 315", "hatch", 4.0, 1.7, 1.5],
-    ["mvm-110", "ام‌وی‌ام ۱۱۰", "MVM 110", "sedan", 4.3, 1.7, 1.45],
+    ["mvm-110", "ام‌وی‌ام ۱۱۰", "MVM 110", "sedan", 4.3, 1.7, 1.45, "boxy"],
     ["mvm-x22", "ام‌وی‌ام X22", "MVM X22", "cross", 4.1, 1.7, 1.57],
     ["mvm-x33", "ام‌وی‌ام X33", "MVM X33", "cross", 4.25, 1.77, 1.6],
-    ["mvm-x55", "ام‌وی‌ام X55", "MVM X55", "cross", 4.4, 1.8, 1.62],
-    ["mvm-550", "ام‌وی‌ام ۵۵۰", "MVM 550", "sedan", 4.65, 1.81, 1.46],
-    ["arrizo-5", "ام‌وی‌ام آریزو ۵", "Chery Arrizo 5", "sedan", 4.57, 1.8, 1.48],
+    ["mvm-x55", "ام‌وی‌ام X55", "MVM X55", "cross", 4.4, 1.8, 1.62, "fast"],
+    ["mvm-550", "ام‌وی‌ام ۵۵۰", "MVM 550", "sedan", 4.65, 1.81, 1.46, "fast"],
+    ["arrizo-5", "ام‌وی‌ام آریزو ۵", "Chery Arrizo 5", "sedan", 4.57, 1.8, 1.48, "fast"],
     ["tiggo-5", "چری تیگو ۵", "Chery Tiggo 5", "cross", 4.46, 1.84, 1.7],
-    ["tiggo-7", "چری تیگو ۷", "Chery Tiggo 7", "cross", 4.5, 1.84, 1.7],
+    ["tiggo-7", "چری تیگو ۷", "Chery Tiggo 7", "cross", 4.5, 1.84, 1.7, "fast"],
     ["tiggo-8", "چری تیگو ۸", "Chery Tiggo 8", "suv", 4.7, 1.86, 1.7],
     ["fownix-fx", "فونیکس FX", "Fownix FX", "cross", 4.3, 1.82, 1.65],
-    ["jac-j4", "جک J4", "JAC J4", "sedan", 4.45, 1.7, 1.5],
-    ["jac-j5", "جک J5", "JAC J5", "sedan", 4.6, 1.8, 1.5],
+    ["jac-j4", "جک J4", "JAC J4", "sedan", 4.45, 1.7, 1.5, "boxy"],
+    ["jac-j5", "جک J5", "JAC J5", "sedan", 4.6, 1.8, 1.5, "fast"],
     ["jac-s3", "جک S3", "JAC S3", "cross", 4.2, 1.76, 1.62],
     ["jac-s5", "جک S5", "JAC S5", "cross", 4.5, 1.84, 1.68],
-    ["lifan-820", "لیفان ۸۲۰", "Lifan 820", "sedan", 4.76, 1.79, 1.5],
-    ["lifan-620", "لیفان ۶۲۰ (سولانو)", "Lifan 620", "sedan", 4.47, 1.7, 1.48],
+    ["lifan-820", "لیفان ۸۲۰", "Lifan 820", "sedan", 4.76, 1.79, 1.5, "fast"],
+    ["lifan-620", "لیفان ۶۲۰ (سولانو)", "Lifan 620", "sedan", 4.47, 1.7, 1.48, "boxy"],
     ["lifan-x60", "لیفان X60", "Lifan X60", "cross", 4.4, 1.79, 1.69],
     ["lifan-x50", "لیفان X50", "Lifan X50", "cross", 4.1, 1.72, 1.59],
-    ["brilliance-h320", "برلیانس H320", "Brilliance H320", "sedan", 4.65, 1.8, 1.5],
-    ["brilliance-h330", "برلیانس H330", "Brilliance H330", "sedan", 4.65, 1.8, 1.5],
-    ["brilliance-h220", "برلیانس H220", "Brilliance H220", "sedan", 4.45, 1.7, 1.5],
+    ["brilliance-h320", "برلیانس H320", "Brilliance H320", "sedan", 4.65, 1.8, 1.5, "fast"],
+    ["brilliance-h330", "برلیانس H330", "Brilliance H330", "sedan", 4.65, 1.8, 1.5, "fast"],
+    ["brilliance-h220", "برلیانس H220", "Brilliance H220", "sedan", 4.45, 1.7, 1.5, "boxy"],
     ["dongfeng-h30", "دانگ‌فنگ H30 کراس", "Dongfeng H30 Cross", "cross", 4.2, 1.75, 1.6],
     ["dongfeng-ax7", "دانگ‌فنگ AX7", "Dongfeng AX7", "cross", 4.6, 1.85, 1.7],
-    ["geely-emgrand", "جیلی امگرند", "Geely Emgrand", "sedan", 4.63, 1.79, 1.5],
+    ["geely-emgrand", "جیلی امگرند", "Geely Emgrand", "sedan", 4.63, 1.79, 1.5, "fast"],
     ["geely-gc6", "جیلی GC6", "Geely GC6", "sedan", 4.6, 1.78, 1.5],
     ["byd-f3", "بی‌وای‌دی F3", "BYD F3", "sedan", 4.53, 1.7, 1.49],
     ["byd-s6", "بی‌وای‌دی S6", "BYD S6", "cross", 4.8, 1.86, 1.72],
-    ["byd-atto3", "بی‌وای‌دی Atto 3", "BYD Atto 3", "cross", 4.46, 1.88, 1.62],
+    ["byd-atto3", "بی‌وای‌دی Atto 3", "BYD Atto 3", "cross", 4.46, 1.88, 1.62, "fast"],
     ["mg-zs", "ام‌جی ZS", "MG ZS", "cross", 4.31, 1.81, 1.64],
-    ["mg-5", "ام‌جی ۵", "MG 5", "sedan", 4.54, 1.81, 1.5],
+    ["mg-5", "ام‌جی ۵", "MG 5", "sedan", 4.54, 1.81, 1.5, "fast"],
     ["mg-6", "ام‌جی ۶", "MG 6", "hatch", 4.68, 1.85, 1.47],
-    ["mg-hs", "ام‌جی HS", "MG HS", "cross", 4.57, 1.87, 1.67],
+    ["mg-hs", "ام‌جی HS", "MG HS", "cross", 4.57, 1.87, 1.67, "fast"],
     ["haval-h2", "هاوال H2", "Haval H2", "cross", 4.34, 1.81, 1.69],
     ["haval-h6", "هاوال H6", "Haval H6", "suv", 4.65, 1.86, 1.69],
-    ["haval-jolion", "هاوال جولیون", "Haval Jolion", "cross", 4.47, 1.84, 1.69],
+    ["haval-jolion", "هاوال جولیون", "Haval Jolion", "cross", 4.47, 1.84, 1.69, "fast"],
     ["changan-cs35", "چانگان CS35", "Changan CS35", "cross", 4.2, 1.8, 1.65],
-    ["changan-cs55", "چانگان CS55", "Changan CS55", "cross", 4.5, 1.85, 1.69],
+    ["changan-cs55", "چانگان CS55", "Changan CS55", "cross", 4.5, 1.85, 1.69, "fast"],
     ["changan-hunter", "چانگان هانتر", "Changan Hunter", "pickup", 5.33, 1.92, 1.8],
-    ["swm-g01", "اس‌دبلیو‌ام G01", "SWM G01", "suv", 4.65, 1.9, 1.74],
-    ["hyundai-accent", "هیوندای اکسنت", "Hyundai Accent", "sedan", 4.37, 1.7, 1.47],
-    ["hyundai-elantra", "هیوندای النترا", "Hyundai Elantra", "sedan", 4.62, 1.8, 1.45],
-    ["hyundai-sonata", "هیوندای سوناتا", "Hyundai Sonata", "sedan", 4.9, 1.86, 1.45],
+    ["swm-g01", "اس‌دبلیو‌ام G01", "SWM G01", "suv", 4.65, 1.9, 1.74, "boxy"],
+    ["hyundai-accent", "هیوندای اکسنت", "Hyundai Accent", "sedan", 4.37, 1.7, 1.47, "boxy"],
+    ["hyundai-elantra", "هیوندای النترا", "Hyundai Elantra", "sedan", 4.62, 1.8, 1.45, "fast"],
+    ["hyundai-sonata", "هیوندای سوناتا", "Hyundai Sonata", "sedan", 4.9, 1.86, 1.45, "fast"],
     ["hyundai-i20", "هیوندای i20", "Hyundai i20", "hatch", 3.98, 1.73, 1.49],
     ["hyundai-i30", "هیوندای i30", "Hyundai i30", "hatch", 4.34, 1.78, 1.47],
-    ["hyundai-tucson", "هیوندای توسان", "Hyundai Tucson", "cross", 4.5, 1.86, 1.65],
+    ["hyundai-tucson", "هیوندای توسان", "Hyundai Tucson", "cross", 4.5, 1.86, 1.65, "fast"],
     ["hyundai-santafe", "هیوندای سانتافه", "Hyundai Santa Fe", "suv", 4.78, 1.89, 1.68],
     ["hyundai-creta", "هیوندای کرتا", "Hyundai Creta", "cross", 4.3, 1.79, 1.63],
-    ["kia-rio", "کیا ریو", "Kia Rio", "sedan", 4.37, 1.7, 1.47],
-    ["kia-pegas", "کیا پگاس", "Kia Pegas", "sedan", 4.4, 1.7, 1.46],
-    ["kia-cerato", "کیا سراتو", "Kia Cerato", "sedan", 4.6, 1.8, 1.44],
-    ["kia-optima", "کیا اپتیما / K5", "Kia Optima", "sedan", 4.85, 1.86, 1.47],
+    ["kia-rio", "کیا ریو", "Kia Rio", "sedan", 4.37, 1.7, 1.47, "boxy"],
+    ["kia-pegas", "کیا پگاس", "Kia Pegas", "sedan", 4.4, 1.7, 1.46, "boxy"],
+    ["kia-cerato", "کیا سراتو", "Kia Cerato", "sedan", 4.6, 1.8, 1.44, "fast"],
+    ["kia-optima", "کیا اپتیما / K5", "Kia Optima", "sedan", 4.85, 1.86, 1.47, "fast"],
     ["kia-picanto", "کیا پیکانتو", "Kia Picanto", "hatch", 3.6, 1.6, 1.49],
-    ["kia-sportage", "کیا اسپورتیج", "Kia Sportage", "cross", 4.48, 1.85, 1.65],
+    ["kia-sportage", "کیا اسپورتیج", "Kia Sportage", "cross", 4.48, 1.85, 1.65, "fast"],
     ["kia-sorento", "کیا سورنتو", "Kia Sorento", "suv", 4.8, 1.89, 1.69],
     ["kia-sonet", "کیا سونت", "Kia Sonet", "cross", 4.1, 1.79, 1.64],
-    ["toyota-corolla", "تویوتا کرولا", "Toyota Corolla", "sedan", 4.63, 1.78, 1.45],
-    ["toyota-camry", "تویوتا کمری", "Toyota Camry", "sedan", 4.88, 1.84, 1.44],
+    ["toyota-corolla", "تویوتا کرولا", "Toyota Corolla", "sedan", 4.63, 1.78, 1.45, "fast"],
+    ["toyota-camry", "تویوتا کمری", "Toyota Camry", "sedan", 4.88, 1.84, 1.44, "fast"],
     ["toyota-yaris", "تویوتا یاریس", "Toyota Yaris", "hatch", 4.1, 1.7, 1.5],
     ["toyota-rav4", "تویوتا راو۴", "Toyota RAV4", "cross", 4.6, 1.85, 1.69],
-    ["toyota-prado", "تویوتا پرادو", "Toyota Prado", "suv", 4.78, 1.89, 1.85],
-    ["toyota-landcruiser", "تویوتا لندکروزر", "Toyota Land Cruiser", "suv", 4.95, 1.98, 1.89],
+    ["toyota-prado", "تویوتا پرادو", "Toyota Prado", "suv", 4.78, 1.89, 1.85, "boxy"],
+    ["toyota-landcruiser", "تویوتا لندکروزر", "Toyota Land Cruiser", "suv", 4.95, 1.98, 1.89, "boxy"],
     ["toyota-hilux", "تویوتا هایلوکس", "Toyota Hilux", "pickup", 5.3, 1.86, 1.81],
-    ["mazda-3", "مزدا ۳", "Mazda 3", "sedan", 4.6, 1.8, 1.45],
-    ["mazda-6", "مزدا ۶", "Mazda 6", "sedan", 4.87, 1.84, 1.45],
+    ["mazda-3", "مزدا ۳", "Mazda 3", "sedan", 4.6, 1.8, 1.45, "fast"],
+    ["mazda-6", "مزدا ۶", "Mazda 6", "sedan", 4.87, 1.84, 1.45, "fast"],
     ["mazda-cx5", "مزدا CX-5", "Mazda CX-5", "cross", 4.55, 1.84, 1.68],
-    ["mazda-cx9", "مزدا CX-9", "Mazda CX-9", "suv", 5.07, 1.97, 1.73],
-    ["nissan-sunny", "نیسان صنی", "Nissan Sunny", "sedan", 4.5, 1.7, 1.5],
+    ["mazda-cx9", "مزدا CX-9", "Mazda CX-9", "suv", 5.07, 1.97, 1.73, "boxy"],
+    ["nissan-sunny", "نیسان صنی", "Nissan Sunny", "sedan", 4.5, 1.7, 1.5, "boxy"],
     ["nissan-tiida", "نیسان تیدا", "Nissan Tiida", "hatch", 4.2, 1.7, 1.54],
     ["nissan-juke", "نیسان جوک", "Nissan Juke", "cross", 4.14, 1.77, 1.57],
-    ["nissan-qashqai", "نیسان قشقایی", "Nissan Qashqai", "cross", 4.4, 1.81, 1.6],
+    ["nissan-qashqai", "نیسان قشقایی", "Nissan Qashqai", "cross", 4.4, 1.81, 1.6, "fast"],
     ["nissan-xtrail", "نیسان ایکس‌تریل", "Nissan X-Trail", "suv", 4.65, 1.82, 1.7],
-    ["nissan-patrol", "نیسان پاترول", "Nissan Patrol", "suv", 5.1, 1.98, 1.94],
+    ["nissan-patrol", "نیسان پاترول", "Nissan Patrol", "suv", 5.1, 1.98, 1.94, "boxy"],
     ["nissan-navara", "نیسان ناوارا", "Nissan Navara", "pickup", 5.3, 1.85, 1.78],
-    ["honda-civic", "هوندا سیویک", "Honda Civic", "sedan", 4.65, 1.8, 1.42],
-    ["honda-accord", "هوندا آکورد", "Honda Accord", "sedan", 4.9, 1.86, 1.45],
+    ["honda-civic", "هوندا سیویک", "Honda Civic", "sedan", 4.65, 1.8, 1.42, "fast"],
+    ["honda-accord", "هوندا آکورد", "Honda Accord", "sedan", 4.9, 1.86, 1.45, "fast"],
     ["honda-crv", "هوندا CR-V", "Honda CR-V", "cross", 4.6, 1.85, 1.68],
-    ["mitsubishi-lancer", "میتسوبیشی لنسر", "Mitsubishi Lancer", "sedan", 4.57, 1.76, 1.49],
+    ["mitsubishi-lancer", "میتسوبیشی لنسر", "Mitsubishi Lancer", "sedan", 4.57, 1.76, 1.49, "boxy"],
     ["mitsubishi-asx", "میتسوبیشی ASX", "Mitsubishi ASX", "cross", 4.3, 1.77, 1.63],
     ["mitsubishi-outlander", "میتسوبیشی اوتلندر", "Mitsubishi Outlander", "suv", 4.7, 1.8, 1.68],
-    ["mitsubishi-pajero", "میتسوبیشی پاجرو", "Mitsubishi Pajero", "suv", 4.9, 1.87, 1.88],
+    ["mitsubishi-pajero", "میتسوبیشی پاجرو", "Mitsubishi Pajero", "suv", 4.9, 1.87, 1.88, "boxy"],
     ["suzuki-vitara", "سوزوکی ویتارا", "Suzuki Vitara", "cross", 4.18, 1.78, 1.61],
     ["suzuki-swift", "سوزوکی سویفت", "Suzuki Swift", "hatch", 3.85, 1.73, 1.5],
-    ["suzuki-jimny", "سوزوکی جیمنی", "Suzuki Jimny", "suv", 3.65, 1.65, 1.7],
-    ["renault-logan", "رنو لوگان / تندر ۹۰", "Renault Logan", "sedan", 4.25, 1.74, 1.52],
+    ["suzuki-jimny", "سوزوکی جیمنی", "Suzuki Jimny", "suv", 3.65, 1.65, 1.7, "boxy"],
+    ["renault-logan", "رنو لوگان / تندر ۹۰", "Renault Logan", "sedan", 4.25, 1.74, 1.52, "boxy"],
     ["renault-sandero", "رنو ساندرو", "Renault Sandero", "hatch", 4.06, 1.74, 1.53],
     ["renault-duster", "رنو داستر", "Renault Duster", "cross", 4.31, 1.82, 1.69],
     ["renault-megane", "رنو مگان", "Renault Megane", "sedan", 4.5, 1.8, 1.47],
     ["renault-clio", "رنو کلیو", "Renault Clio", "hatch", 4.06, 1.73, 1.45],
-    ["chevrolet-cruze", "شورولت کروز", "Chevrolet Cruze", "sedan", 4.6, 1.79, 1.48],
-    ["chevrolet-optra", "شورولت اپترا", "Chevrolet Optra", "sedan", 4.5, 1.72, 1.45],
+    ["chevrolet-cruze", "شورولت کروز", "Chevrolet Cruze", "sedan", 4.6, 1.79, 1.48, "fast"],
+    ["chevrolet-optra", "شورولت اپترا", "Chevrolet Optra", "sedan", 4.5, 1.72, 1.45, "boxy"],
     ["chevrolet-captiva", "شورولت کپتیوا", "Chevrolet Captiva", "cross", 4.67, 1.85, 1.75],
     ["vw-golf", "فولکس گلف", "Volkswagen Golf", "hatch", 4.26, 1.8, 1.45],
-    ["vw-passat", "فولکس پاسات", "Volkswagen Passat", "sedan", 4.77, 1.83, 1.46],
+    ["vw-passat", "فولکس پاسات", "Volkswagen Passat", "sedan", 4.77, 1.83, 1.46, "fast"],
     ["vw-tiguan", "فولکس تیگوان", "Volkswagen Tiguan", "cross", 4.43, 1.84, 1.68],
     ["skoda-octavia", "اشکودا اکتاویا", "Skoda Octavia", "hatch", 4.69, 1.83, 1.47],
     ["citroen-c3", "سیتروئن C3", "Citroen C3", "hatch", 3.99, 1.75, 1.52],
     ["citroen-c4", "سیتروئن C4", "Citroen C4", "hatch", 4.33, 1.79, 1.49],
     ["ford-focus", "فورد فوکوس", "Ford Focus", "hatch", 4.36, 1.82, 1.48],
-    ["ford-fusion", "فورد فیوژن", "Ford Fusion", "sedan", 4.87, 1.85, 1.48],
-    ["ford-explorer", "فورد اکسپلورر", "Ford Explorer", "suv", 5.04, 2.0, 1.78],
-    ["bmw-3", "بی‌ام‌و سری ۳", "BMW 3 Series", "sedan", 4.71, 1.83, 1.44],
-    ["bmw-5", "بی‌ام‌و سری ۵", "BMW 5 Series", "sedan", 4.96, 1.87, 1.47],
-    ["bmw-x3", "بی‌ام‌و X3", "BMW X3", "cross", 4.71, 1.89, 1.68],
+    ["ford-fusion", "فورد فیوژن", "Ford Fusion", "sedan", 4.87, 1.85, 1.48, "fast"],
+    ["ford-explorer", "فورد اکسپلورر", "Ford Explorer", "suv", 5.04, 2.0, 1.78, "boxy"],
+    ["bmw-3", "بی‌ام‌و سری ۳", "BMW 3 Series", "sedan", 4.71, 1.83, 1.44, "fast"],
+    ["bmw-5", "بی‌ام‌و سری ۵", "BMW 5 Series", "sedan", 4.96, 1.87, 1.47, "fast"],
+    ["bmw-x3", "بی‌ام‌و X3", "BMW X3", "cross", 4.71, 1.89, 1.68, "fast"],
     ["bmw-x5", "بی‌ام‌و X5", "BMW X5", "suv", 4.92, 2.0, 1.76],
-    ["benz-c", "بنز کلاس C", "Mercedes-Benz C-Class", "sedan", 4.69, 1.81, 1.44],
-    ["benz-e", "بنز کلاس E", "Mercedes-Benz E-Class", "sedan", 4.95, 1.85, 1.46],
-    ["benz-glc", "بنز GLC", "Mercedes-Benz GLC", "cross", 4.66, 1.89, 1.64],
-    ["audi-a4", "آئودی A4", "Audi A4", "sedan", 4.76, 1.84, 1.43],
-    ["audi-a6", "آئودی A6", "Audi A6", "sedan", 4.94, 1.89, 1.46],
-    ["audi-q5", "آئودی Q5", "Audi Q5", "cross", 4.68, 1.89, 1.66],
-    ["lexus-rx", "لکسوس RX", "Lexus RX", "cross", 4.89, 1.92, 1.69],
-    ["jeep-cherokee", "جیپ چروکی", "Jeep Cherokee", "suv", 4.62, 1.86, 1.69],
-    ["tesla-3", "تسلا مدل ۳", "Tesla Model 3", "sedan", 4.69, 1.85, 1.44],
+    ["benz-c", "بنز کلاس C", "Mercedes-Benz C-Class", "sedan", 4.69, 1.81, 1.44, "fast"],
+    ["benz-e", "بنز کلاس E", "Mercedes-Benz E-Class", "sedan", 4.95, 1.85, 1.46, "fast"],
+    ["benz-glc", "بنز GLC", "Mercedes-Benz GLC", "cross", 4.66, 1.89, 1.64, "fast"],
+    ["audi-a4", "آئودی A4", "Audi A4", "sedan", 4.76, 1.84, 1.43, "fast"],
+    ["audi-a6", "آئودی A6", "Audi A6", "sedan", 4.94, 1.89, 1.46, "fast"],
+    ["audi-q5", "آئودی Q5", "Audi Q5", "cross", 4.68, 1.89, 1.66, "fast"],
+    ["lexus-rx", "لکسوس RX", "Lexus RX", "cross", 4.89, 1.92, 1.69, "fast"],
+    ["jeep-cherokee", "جیپ چروکی", "Jeep Cherokee", "suv", 4.62, 1.86, 1.69, "boxy"],
+    ["tesla-3", "تسلا مدل ۳", "Tesla Model 3", "sedan", 4.69, 1.85, 1.44, "fast"],
     ["volvo-xc60", "ولوو XC60", "Volvo XC60", "cross", 4.69, 1.9, 1.66]
   ];
   var DEFAULT_COLORS = ["#f2f2f2", "#c9ced4", "#2b2f36", "#c4262e", "#1f5fbf", "#6d7886", "#f0b323", "#2f8f5b", "#7a4a28", "#7c3aed"];
@@ -159,7 +159,7 @@
   }
   var INDEX = CARS.map(function (c) {
     var brandFa = c[1].split(" ")[0], brandEn = c[2].split(" ")[0];
-    return { key: c[0], fa: c[1], en: c[2], type: c[3], L: c[4], W: c[5], H: c[6],
+    return { key: c[0], fa: c[1], en: c[2], type: c[3], L: c[4], W: c[5], H: c[6], style: c[7] || "",
       tokens: [normalize(c[1]), normalize(c[2]), normalize(c[1].split(" ").slice(1).join(" ")), normalize(c[2].split(" ").slice(1).join(" "))].filter(function (t) { return t.length >= 2; }),
       brand: normalize(brandFa), brandEn: normalize(brandEn) };
   });
@@ -199,8 +199,15 @@
     pickup: { belt: 0.58, nose: 0.52, hood: 0.57, tail: 0.5, house: [0.4, 0.43, 0.62, 0.74], gc: 0.22, bed: 0.38 },
     van: { belt: 0.55, nose: 0.5, hood: 0.52, tail: 0.6, house: [0.02, 0.03, 0.8, 0.9], gc: 0.2 }
   };
+  var STY = {
+    "sedan:fast": { house: [0.15, 0.41, 0.6, 0.72], tail: 0.55, nose: 0.48 },
+    "sedan:boxy": { house: [0.22, 0.28, 0.58, 0.67], nose: 0.54, tail: 0.6 },
+    "hatch:boxy": { house: [0.03, 0.08, 0.6, 0.7], nose: 0.54 },
+    "cross:fast": { house: [0.09, 0.27, 0.58, 0.73], tail: 0.58 },
+    "suv:boxy": { house: [0.02, 0.04, 0.66, 0.76], nose: 0.6, hood: 0.64 }
+  };
   function buildProfile(spec) {
-    var t = T[spec.type] || T.sedan, L = spec.L, H = spec.H, belt = t.belt * H, gc = t.gc;
+    var t0 = T[spec.type] || T.sedan, st = STY[spec.type + ":" + spec.style], t = st ? Object.assign({}, t0, st) : t0, L = spec.L, H = spec.H, belt = t.belt * H, gc = t.gc;
     var r = Math.min(0.42, Math.max(0.29, H * (spec.type === "suv" || spec.type === "pickup" ? 0.22 : 0.215)));
     var wb = spec.wb || L * 0.6;
     var xf = L - (L - wb) * 0.46, xr = xf - wb;
@@ -279,6 +286,13 @@
     faces.push(cap(cz + w / 2 + 0.002, 1), cap(cz - w / 2 - 0.002, -1));
     var hubR = r * 0.58, hub = [];
     for (i = 0; i < seg; i++) { var b = 2 * Math.PI * i / seg; hub.push([cx + hubR * Math.cos(b), cy + hubR * Math.sin(b)]); }
+    for (i = 0; i < 5; i++) {
+      var sa = 2 * Math.PI * i / 5 + 0.3, ca = Math.cos(sa), sn = Math.sin(sa), hw = r * 0.07, r0 = r * 0.2, r1 = r * 0.88;
+      [1, -1].forEach(function (side) {
+        var zz = cz + side * (w / 2 + 0.005), q = [[r0, -hw], [r1, -hw * 0.7], [r1, hw * 0.7], [r0, hw]].map(function (u) { return [cx + u[0] * ca - u[1] * sn, cy + u[0] * sn + u[1] * ca, zz]; });
+        faces.push({ v: side > 0 ? q : q.slice().reverse(), n: [0, 0, side], spoke: true });
+      });
+    }
     faces.push({ v: hub.map(function (p) { return [p[0], p[1], cz + w / 2 + 0.006]; }), n: [0, 0, 1], hub: true });
     faces.push({ v: hub.map(function (p) { return [p[0], p[1], cz - w / 2 - 0.006]; }).reverse(), n: [0, 0, -1], hub: true });
     var s = solid(faces, "#17191c", { tire: true, rim: rim });
@@ -325,6 +339,28 @@
     var mx = p.hx[3] - cx - 0.12;
     out.post.push(box(mx, p.belt + 0.1, W / 2 + 0.05, 0.14, 0.09, 0.12, color, { paint: true }));
     out.post.push(box(mx, p.belt + 0.1, -W / 2 - 0.05, 0.14, 0.09, 0.12, color, { paint: true }));
+    // سپر پایین، پلاک، رکاب و خط درها
+    var trim = "#25282d", gc = p.gc;
+    out.post.push(box(L / 2 - 0.02, gc + 0.14, 0, 0.06, 0.15, W * 0.94, trim, { front: true }));
+    out.post.push(box(-L / 2 + 0.02, gc + 0.14, 0, 0.06, 0.15, W * 0.94, trim, {}));
+    out.post.push(box(L / 2 + 0.012, gc + 0.22, 0, 0.012, 0.115, 0.34, "#eeeeea", { plate: true, front: true }));
+    out.post.push(box(-L / 2 - 0.012, gc + 0.3, 0, 0.012, 0.115, 0.34, "#eeeeea", { plate: true }));
+    out.post.push(box(L / 2 - 0.005, gc + 0.3, 0, 0.05, 0.05, W * 0.5, "#16181b", { front: true }));
+    var doorA = p.hx[3] - cx - 0.02, doorC = p.hx[0] - cx + 0.03, doorB = (doorA + doorC) / 2, seamY0 = gc + 0.3, seamH = p.belt - seamY0 + 0.02;
+    [-1, 1].forEach(function (sd) {
+      var zz = sd * (W / 2 + 0.004);
+      out.post.push(box(doorB, seamY0 + seamH / 2, zz, 0.012, seamH, 0.008, "#0e1013", {}));
+      var archTop = p.r * 2 + 0.12, shortH = p.belt - archTop + 0.02;
+      if (shortH > 0.08) [doorA, doorC].forEach(function (x) { out.post.push(box(x, archTop + shortH / 2, zz, 0.012, shortH, 0.008, "#0e1013", {})); });
+      [doorB + 0.34, doorC + 0.34].forEach(function (x) { if (x < doorA - 0.15) out.post.push(box(x, p.belt - 0.08, zz, 0.15, 0.026, 0.014, "#cfd6dc", { chrome: true })); });
+      out.post.push(box((p.wheels[0] + p.wheels[1]) / 2 - cx, gc + 0.07, zz, Math.max(0.4, (p.wheels[1] - p.wheels[0]) - p.r * 2.2), 0.05, 0.008, "#16181b", {}));
+    });
+    if (spec.type === "suv" || spec.type === "cross" || spec.type === "van") {
+      [-1, 1].forEach(function (sd) { out.post.push(box((p.hx[1] + p.hx[2]) / 2 - cx, H + 0.025, sd * W * 0.33, Math.max(0.5, p.hx[2] - p.hx[1] - 0.15), 0.035, 0.04, "#1a1c1f", {})); });
+    }
+    if (spec.type === "sedan" && spec.style === "fast") {
+      out.post.push(box(-L / 2 + 0.1, p.tailY + 0.01, 0, 0.14, 0.03, W * 0.78, color, { paint: true }));
+    }
     if (spec.type === "pickup") {
       // کف و دیوارهٔ کابین بار
       var bx0 = -L / 2 + 0.04, bx1 = p.hx[0] - cx - 0.04, by = p.bedTop;
@@ -366,6 +402,7 @@
       if (o.emit) color = shade(rgb, 1);
       else if (o.glass) color = shade([40, 62, 82], 0.5 + 0.9 * it.lit);
       else if (it.face.dark) color = shade([26, 28, 33], 0.7 + 0.6 * it.lit);
+      else if (it.face.spoke) color = shade(hexToRgb(o.rim), 0.78 + 0.5 * it.lit);
       else if (it.face.hub) color = shade([70, 76, 84], 0.7 + 0.5 * it.lit);
       else if (it.face.rim) color = shade(hexToRgb(o.rim), 0.5 + 0.55 * it.lit);
       else color = shade(rgb, 0.5 + 0.62 * it.lit);
@@ -407,7 +444,7 @@
     nearPost.sort(byFar).forEach(function (s) { drawSolid(ctx, s, cam, s.opts.emit ? hexToRgb(s.color) : s.opts.paint ? rgb : hexToRgb(s.color)); });
   }
   function make(entry, color) {
-    var spec = { type: entry.type, L: entry.L, W: entry.W, H: entry.H };
+    var spec = { type: entry.type, L: entry.L, W: entry.W, H: entry.H, style: entry.style };
     var m = build(spec, color || "#f2f2f2"); m.color = color || "#f2f2f2"; m.entry = entry;
     return m;
   }
