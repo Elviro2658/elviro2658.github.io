@@ -1,0 +1,162 @@
+#FILE index.html
+#REPLACE
+ref="/styles.css?v=52" />
+    <title>سروی
+#WITH
+ref="/styles.css?v=53" />
+    <title>سروی
+#END
+#REPLACE
+er src="/car3d.js?v=2"></script>
+    <scr
+#WITH
+er src="/car3d.js?v=3"></script>
+    <scr
+#END
+#REPLACE
+fer src="/hero.js?v=2"></script>
+  </body
+#WITH
+fer src="/hero.js?v=3"></script>
+  </body
+#END
+#FILE sw.js
+#REPLACE
+4
+#WITH
+5
+#END
+#REPLACE
+l", "/styles.css?v=52", "/main.js?v=33", 
+#WITH
+l", "/styles.css?v=53", "/main.js?v=33", 
+#END
+#REPLACE
+2", "/hero.js?v=2
+#WITH
+3", "/hero.js?v=3
+#END
+#FILE styles.css
+#REPLACE
+t;aspect-ratio:460/264}
+.car-stage canvas{
+#WITH
+t;aspect-ratio:460/240}
+.car-stage canvas{
+#END
+#REPLACE
+ight:700;color:#fff;white-space:nowrap}
+
+#WITH
+ight:700;color:#fff;white-space:nowrap}
+
+html.no-car .car-stage,html.no-car .car-specs{display:none!important}
+
+#END
+#FILE car3d.js
+#REPLACE
+.8 * W * D / model.L;
+    function tp(pt
+#WITH
+.8 * W * D / model.L * Math.min(1, (H / W) / 0.575 * 1.02);
+    function tp(pt
+#END
+#REPLACE
++ x * k, sy: H * 0.56 - y2 * k, d: D - z2
+#WITH
++ x * k, sy: H * 0.5 - y2 * k, d: D - z2
+#END
+#REPLACE
+nd.sx, cyg = H * 0.56 + (model.H * 0.5) *
+#WITH
+nd.sx, cyg = H * 0.5 + (model.H * 0.5) *
+#END
+#FILE hero.js
+#REPLACE
+reduce ? 0 : 0.5, yaw = 0.6, vel =
+#WITH
+0.5, autoUntil = 0, SHOW = true, yaw = 0.6, vel = reduce ? 0 :
+#END
+#REPLACE
+75
+#WITH
+2
+#END
+#REPLACE
+e || document.hidden) return;
+    var dt
+#WITH
+e || document.hidden || !SHOW) return;
+    var dt
+#END
+#REPLACE
+st : 16); last = t;
+    if (!dragging) {
+#WITH
+st : 16); last = t;
+    // چرخش خودکار فقط چند ثانیه بعد از نمایش خودرو؛ بعد آرام می‌ایستد و فقط با لمس می‌چرخد
+    var want = !reduce && performance.now() < autoUntil ? AUTO : 0;
+    if (!dragging) {
+#END
+#REPLACE
+AUTO - vel) * Math.min(1, dt / 500); }
+    paint();
+    if (AUTO || dragging || Math.abs(vel) > 0.01
+#WITH
+want - vel) * Math.min(1, dt / 700); }
+    paint();
+    if (dragging || want || Math.abs(vel) > 0.02
+#END
+#REPLACE
+ if (!raf && visible && !document.hidden
+#WITH
+ if (!raf && visible && SHOW && !document.hidden
+#END
+#REPLACE
+(c.entry, c.color); }
+    var cap = $("#
+#WITH
+(c.entry, c.color); autoUntil = performance.now() + 9000; }
+    var cap = $("#
+#END
+#REPLACE
+
+    dragging = true; lastX = e.clientX;
+#WITH
+
+    dragging = true; autoUntil = 0; lastX = e.clientX;
+#END
+#REPLACE
+}).observe(canvas);
+
+  var priorRender =
+#WITH
+}).observe(canvas);
+
+  /* ---------- روشن/خاموش‌کردن نمایش خودرو (روی همین دستگاه ذخیره می‌شود) ---------- */
+  var SHOW_KEY = "servicenegar.showCar";
+  function readShow() { try { return localStorage.getItem(SHOW_KEY) !== "0"; } catch (e) { return true; } }
+  function setShow(on) {
+    SHOW = !!on;
+    try { localStorage.setItem(SHOW_KEY, SHOW ? "1" : "0"); } catch (e) { }
+    document.documentElement.classList.toggle("no-car", !SHOW);
+    if (SHOW) { resize(); paint(); autoUntil = performance.now() + 6000; kick(); }
+    else if (raf) { cancelAnimationFrame(raf); raf = 0; }
+  }
+  function buildShowToggle() {
+    var body = $("#settings-dialog .settings-body");
+    if (!body || $("#show-car-switch")) return;
+    var section = document.createElement("section");
+    section.className = "settings-section";
+    section.innerHTML = '<h3>نمایش</h3><label class="settings-row"><span><strong>خودروی سه‌بعدی در صفحهٔ اصلی</strong><small>با خاموش‌کردنش فضای بیشتری آزاد می‌شود و باتری کمتری مصرف می‌شود</small></span><input class="settings-switch" id="show-car-switch" type="checkbox" /></label>';
+    body.insertBefore(section, body.firstChild);
+    var box = $("#show-car-switch");
+    box.checked = SHOW;
+    box.addEventListener("change", function () { setShow(box.checked); });
+  }
+  SHOW = readShow();
+  document.documentElement.classList.toggle("no-car", !SHOW);
+  buildShowToggle();
+
+  var priorRender =
+#END
