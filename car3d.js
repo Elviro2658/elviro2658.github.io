@@ -376,11 +376,11 @@
   function project(model, W, H, yaw, pitch) {
     var cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
     var D = Math.max(model.L, model.W * 1.8) * 2.3 + 2;
-    var f = 0.8 * W * D / model.L;
+    var f = 0.8 * W * D / model.L * Math.min(1, (H / W) / 0.575 * 1.02);
     function tp(pt) {
       var x = pt[0] * cy + pt[2] * sy, z = -pt[0] * sy + pt[2] * cy, y = pt[1] - model.H * 0.5;
       var y2 = y * cp - z * sp, z2 = y * sp + z * cp, k = f / (D - z2);
-      return { sx: W / 2 + x * k, sy: H * 0.56 - y2 * k, d: D - z2, x: x, y: y2, z: z2 };
+      return { sx: W / 2 + x * k, sy: H * 0.5 - y2 * k, d: D - z2, x: x, y: y2, z: z2 };
     }
     function rn(n) { var x = n[0] * cy + n[2] * sy, z = -n[0] * sy + n[2] * cy, y2 = n[1] * cp - z * sp, z2 = n[1] * sp + z * cp; return [x, y2, z2]; }
     return { tp: tp, rn: rn, D: D, f: f };
@@ -422,7 +422,7 @@
     // کف نئونی و سایه
     var ground = cam.tp([0, 0, 0]);
     var rx = Math.max(model.L, model.W) * 0.62 * cam.f / ground.d, ry = rx * Math.sin(pitch === undefined ? 0.26 : pitch) * 1.15;
-    var cxg = ground.sx, cyg = H * 0.56 + (model.H * 0.5) * cam.f / ground.d * Math.cos(pitch === undefined ? 0.26 : pitch);
+    var cxg = ground.sx, cyg = H * 0.5 + (model.H * 0.5) * cam.f / ground.d * Math.cos(pitch === undefined ? 0.26 : pitch);
     var neon = opts.neon || "#35e0ff";
     var grd = ctx.createRadialGradient(cxg, cyg, rx * 0.1, cxg, cyg, rx * 1.15);
     grd.addColorStop(0, "rgba(53,224,255,0.26)"); grd.addColorStop(0.55, "rgba(124,58,237,0.16)"); grd.addColorStop(1, "rgba(0,0,0,0)");

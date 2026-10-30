@@ -34,24 +34,26 @@
   var canvas = $("#car-canvas"), ctx = canvas && canvas.getContext ? canvas.getContext("2d") : null;
   if (!Cars || !ctx) return;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var AUTO = reduce ? 0 : 0.5, yaw = 0.6, vel = AUTO, dragging = false, lastX = 0, lastT = 0, raf = 0, visible = true, model = null, signature = "", cw = 460, ch = 264, last = 0;
+  var AUTO = 0.5, autoUntil = 0, SHOW = true, yaw = 0.6, vel = reduce ? 0 : AUTO, dragging = false, lastX = 0, lastT = 0, raf = 0, visible = true, model = null, signature = "", cw = 460, ch = 264, last = 0;
 
   function resize() {
     var rect = canvas.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
-    cw = Math.max(240, Math.round(rect.width || 460)); ch = Math.round(cw * 0.575);
+    cw = Math.max(240, Math.round(rect.width || 460)); ch = Math.round(cw * 0.52);
     canvas.width = Math.round(cw * dpr); canvas.height = Math.round(ch * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   function paint() { if (model) Cars.draw(ctx, model, cw, ch, yaw, 0.24, {}); }
   function frame(t) {
     raf = 0;
-    if (!model || !visible || document.hidden) return;
+    if (!model || !visible || document.hidden || !SHOW) return;
     var dt = Math.min(60, last ? t - last : 16); last = t;
-    if (!dragging) { yaw += vel * dt / 1000; vel += (AUTO - vel) * Math.min(1, dt / 500); }
+    // چرخش خودکار فقط چند ثانیه بعد از نمایش خودرو؛ بعد آرام می‌ایستد و فقط با لمس می‌چرخد
+    var want = !reduce && performance.now() < autoUntil ? AUTO : 0;
+    if (!dragging) { yaw += vel * dt / 1000; vel += (want - vel) * Math.min(1, dt / 700); }
     paint();
-    if (AUTO || dragging || Math.abs(vel) > 0.01) raf = requestAnimationFrame(frame);
+    if (dragging || want || Math.abs(vel) > 0.02) raf = requestAnimationFrame(frame);
   }
-  function kick() { if (!raf && visible && !document.hidden) { last = 0; raf = requestAnimationFrame(frame); } }
+  function kick() { if (!raf && visible && SHOW && !document.hidden) { last = 0; raf = requestAnimationFrame(frame); } }
 
   function current() {
     var v = (typeof state !== "undefined" && state.vehicle) || {};
@@ -78,7 +80,7 @@
   }
   function sync() {
     var c = current(), sig = c.entry.key + "|" + c.color;
-    if (sig !== signature) { signature = sig; model = Cars.make(c.entry, c.color); }
+    if (sig !== signature) { signature = sig; model = Cars.make(c.entry, c.color); autoUntil = performance.now() + 9000; }
     var cap = $("#car-caption");
     if (cap) cap.textContent = c.entry.key.indexOf("generic-") === 0 ? "" : c.entry.fa;
     renderSpecs(c);
@@ -87,7 +89,7 @@
 
   var pointers = {};
   canvas.addEventListener("pointerdown", function (e) {
-    dragging = true; lastX = e.clientX; lastT = performance.now(); vel = 0;
+    dragging = true; autoUntil = 0; lastX = e.clientX; lastT = performance.now(); vel = 0;
     try { canvas.setPointerCapture(e.pointerId); } catch (x) { }
     kick();
   });
@@ -101,6 +103,31 @@
   window.addEventListener("resize", function () { resize(); paint(); });
   document.addEventListener("visibilitychange", kick);
   if (window.IntersectionObserver) new IntersectionObserver(function (items) { visible = items[0].isIntersecting; if (visible) { resize(); paint(); } kick(); }).observe(canvas);
+
+  /* ---------- روشن/خاموش‌کردن نمایش خودرو (روی همین دستگاه ذخیره می‌شود) ---------- */
+  var SHOW_KEY = "servicenegar.showCar";
+  function readShow() { try { return localStorage.getItem(SHOW_KEY) !== "0"; } catch (e) { return true; } }
+  function setShow(on) {
+    SHOW = !!on;
+    try { localStorage.setItem(SHOW_KEY, SHOW ? "1" : "0"); } catch (e) { }
+    document.documentElement.classList.toggle("no-car", !SHOW);
+    if (SHOW) { resize(); paint(); autoUntil = performance.now() + 6000; kick(); }
+    else if (raf) { cancelAnimationFrame(raf); raf = 0; }
+  }
+  function buildShowToggle() {
+    var body = $("#settings-dialog .settings-body");
+    if (!body || $("#show-car-switch")) return;
+    var section = document.createElement("section");
+    section.className = "settings-section";
+    section.innerHTML = '<h3>نمایش</h3><label class="settings-row"><span><strong>خودروی سه‌بعدی در صفحهٔ اصلی</strong><small>با خاموش‌کردنش فضای بیشتری آزاد می‌شود و باتری کمتری مصرف می‌شود</small></span><input class="settings-switch" id="show-car-switch" type="checkbox" /></label>';
+    body.insertBefore(section, body.firstChild);
+    var box = $("#show-car-switch");
+    box.checked = SHOW;
+    box.addEventListener("change", function () { setShow(box.checked); });
+  }
+  SHOW = readShow();
+  document.documentElement.classList.toggle("no-car", !SHOW);
+  buildShowToggle();
 
   var priorRender = window.render;
   if (typeof priorRender === "function") window.render = function () { var result = priorRender.apply(this, arguments); sync(); return result; };
